@@ -47,14 +47,18 @@
             this.btnSearchProduct = new FontAwesome.Sharp.IconButton();
             this.btnNewTransac = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.menuBtn = new FontAwesome.Sharp.IconButton();
+            this.transaction1 = new POS_Inventory.ControlsCashier.Transaction();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(22)))), ((int)(((byte)(52)))));
+            this.panel1.Controls.Add(this.menuBtn);
             this.panel1.Controls.Add(this.iconButton1);
             this.panel1.Controls.Add(this.iconButton2);
             this.panel1.Controls.Add(this.iconButton3);
@@ -363,14 +367,42 @@
             this.btnNewTransac.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNewTransac.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNewTransac.UseVisualStyleBackColor = true;
+            this.btnNewTransac.Click += new System.EventHandler(this.btnNewTransac_Click);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.transaction1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 88);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(974, 599);
             this.panel3.TabIndex = 8;
+            // 
+            // menuBtn
+            // 
+            this.menuBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuBtn.FlatAppearance.BorderSize = 0;
+            this.menuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.menuBtn.IconChar = FontAwesome.Sharp.IconChar.Bars;
+            this.menuBtn.IconColor = System.Drawing.Color.White;
+            this.menuBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.menuBtn.IconSize = 26;
+            this.menuBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.menuBtn.Location = new System.Drawing.Point(1211, 53);
+            this.menuBtn.Name = "menuBtn";
+            this.menuBtn.Size = new System.Drawing.Size(39, 32);
+            this.menuBtn.TabIndex = 4;
+            this.menuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.menuBtn.UseVisualStyleBackColor = true;
+            this.menuBtn.Click += new System.EventHandler(this.menuBtn_Click);
+            // 
+            // transaction1
+            // 
+            this.transaction1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transaction1.Location = new System.Drawing.Point(0, 0);
+            this.transaction1.Name = "transaction1";
+            this.transaction1.Size = new System.Drawing.Size(974, 599);
+            this.transaction1.TabIndex = 0;
             // 
             // Cashier
             // 
@@ -388,6 +420,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -411,5 +444,7 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton3;
         private System.Windows.Forms.Panel panel3;
+        private FontAwesome.Sharp.IconButton menuBtn;
+        private ControlsCashier.Transaction transaction1;
     }
 }

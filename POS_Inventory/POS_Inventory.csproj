@@ -105,6 +105,12 @@
     <Compile Include="ControlsAdmin\StockIn.Designer.cs">
       <DependentUpon>StockIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlsCashier\Transaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlsCashier\Transaction.Designer.cs">
+      <DependentUpon>Transaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\BrandDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlsAdmin\StockIn.resx">
       <DependentUpon>StockIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsCashier\Transaction.resx">
+      <DependentUpon>Transaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\BrandDialog.resx">
       <DependentUpon>BrandDialog.cs</DependentUpon>

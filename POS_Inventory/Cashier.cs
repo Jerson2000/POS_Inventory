@@ -16,6 +16,7 @@ namespace POS_Inventory
         public Cashier()
         {
             InitializeComponent();
+            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
         }
 
         #region Drag Form 
@@ -63,9 +64,26 @@ namespace POS_Inventory
             this.WindowState = FormWindowState.Minimized;
         }
 
+
         #endregion
+        // Toggle Menu Btn
+        private void menuBtn_Click(object sender, EventArgs e)
+        {
+            // w x h - 279, 599 - panel2 size
+            if (panel2.Size.Width == 279)
+            {
+                panel2.Size = new System.Drawing.Size(0, 599);
+            }
+            else if (panel2.Size.Width == 0)
+            {
+                panel2.Size = new System.Drawing.Size(279, 599);
+            }
+        }
 
-
+        private void btnNewTransac_Click(object sender, EventArgs e)
+        {
+            transaction1.GetTransNo();
+        }
     }
 
 }

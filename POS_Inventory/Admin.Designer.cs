@@ -35,6 +35,7 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.menuBtn = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnStockIn = new FontAwesome.Sharp.IconButton();
             this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.btnUSettings = new FontAwesome.Sharp.IconButton();
             this.btnSysSettings = new FontAwesome.Sharp.IconButton();
@@ -50,10 +51,9 @@
             this.panelContainer = new System.Windows.Forms.Panel();
             this.dashboard1 = new POS_Inventory.ControlsAdmin.Dashboard();
             this.product1 = new POS_Inventory.ControlsAdmin.Product();
+            this.stockIn1 = new POS_Inventory.ControlsAdmin.StockIn();
             this.category1 = new POS_Inventory.ControlsAdmin.Category();
             this.brand1 = new POS_Inventory.ControlsAdmin.Brand();
-            this.btnStockIn = new FontAwesome.Sharp.IconButton();
-            this.stockIn1 = new POS_Inventory.ControlsAdmin.StockIn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -168,6 +168,27 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(259, 641);
             this.panel2.TabIndex = 1;
+            // 
+            // btnStockIn
+            // 
+            this.btnStockIn.FlatAppearance.BorderSize = 0;
+            this.btnStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockIn.ForeColor = System.Drawing.Color.White;
+            this.btnStockIn.IconChar = FontAwesome.Sharp.IconChar.Warehouse;
+            this.btnStockIn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnStockIn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnStockIn.IconSize = 30;
+            this.btnStockIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockIn.Location = new System.Drawing.Point(13, 318);
+            this.btnStockIn.Name = "btnStockIn";
+            this.btnStockIn.Size = new System.Drawing.Size(231, 29);
+            this.btnStockIn.TabIndex = 3;
+            this.btnStockIn.Text = "Stock In";
+            this.btnStockIn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
             // 
             // btnLogout
             // 
@@ -417,6 +438,14 @@
             this.product1.Size = new System.Drawing.Size(994, 641);
             this.product1.TabIndex = 3;
             // 
+            // stockIn1
+            // 
+            this.stockIn1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stockIn1.Location = new System.Drawing.Point(0, 0);
+            this.stockIn1.Name = "stockIn1";
+            this.stockIn1.Size = new System.Drawing.Size(994, 641);
+            this.stockIn1.TabIndex = 4;
+            // 
             // category1
             // 
             this.category1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -433,35 +462,6 @@
             this.brand1.Name = "brand1";
             this.brand1.Size = new System.Drawing.Size(994, 641);
             this.brand1.TabIndex = 0;
-            // 
-            // btnStockIn
-            // 
-            this.btnStockIn.FlatAppearance.BorderSize = 0;
-            this.btnStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockIn.ForeColor = System.Drawing.Color.White;
-            this.btnStockIn.IconChar = FontAwesome.Sharp.IconChar.Warehouse;
-            this.btnStockIn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnStockIn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnStockIn.IconSize = 30;
-            this.btnStockIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockIn.Location = new System.Drawing.Point(13, 318);
-            this.btnStockIn.Name = "btnStockIn";
-            this.btnStockIn.Size = new System.Drawing.Size(231, 29);
-            this.btnStockIn.TabIndex = 3;
-            this.btnStockIn.Text = "Stock In";
-            this.btnStockIn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStockIn.UseVisualStyleBackColor = true;
-            this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
-            // 
-            // stockIn1
-            // 
-            this.stockIn1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stockIn1.Location = new System.Drawing.Point(0, 0);
-            this.stockIn1.Name = "stockIn1";
-            this.stockIn1.Size = new System.Drawing.Size(994, 641);
-            this.stockIn1.TabIndex = 4;
             // 
             // Admin
             // 

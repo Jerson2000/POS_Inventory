@@ -63,7 +63,7 @@ namespace POS_Inventory
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
@@ -176,22 +176,25 @@ namespace POS_Inventory
         {
             
             SetActivePanel(brand1);
-           
+            brand1.LoadData();
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
             SetActivePanel(category1);
+            category1.LoadData();
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
             SetActivePanel(product1);
+            product1.LoadData("");
         }
 
         private void btnStockIn_Click(object sender, EventArgs e)
         {
             SetActivePanel(stockIn1);
+            stockIn1.LoadData();
         }
     }
 

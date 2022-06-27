@@ -55,15 +55,39 @@ namespace POS_Inventory.Dialogs
                 else if (MessageBox.Show("Add this item ?", dbcon.GetTitle(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    cmd = new SqlCommand("insert into tbStock (refno,pcode,sdate,stock_in_by) values (@refno,@pcode,@sdate,@stockby)", conn);
-                    cmd.Parameters.AddWithValue("@refno", f.txtRefno.Text);
-                    cmd.Parameters.AddWithValue("@pcode", dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
-                    cmd.Parameters.AddWithValue("@sdate", f.dtStockDate.Value);
-                    cmd.Parameters.AddWithValue("@stockby", f.txtStockBy.Text);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    MessageBox.Show("Successfully Added", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cmd = new SqlCommand("select * from tbStock where status = 'Pending' and pcode ='" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "';", conn);
+                    dr = cmd.ExecuteReader();
+                    
+                    if (dr.Read())
+                    {
+                        MessageBox.Show("Item is already in the list", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        dr.Close();
+                        conn.Close();
+                    }
+                    else
+                    {
+                        dr.Close();
+                        cmd = new SqlCommand("insert into tbStock (refno,pcode,sdate,stock_in_by) values (@refno,@pcode,@sdate,@stockby)", conn);
+                        cmd.Parameters.AddWithValue("@refno", f.txtRefno.Text);
+                        cmd.Parameters.AddWithValue("@pcode", dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+                        cmd.Parameters.AddWithValue("@sdate", f.dtStockDate.Value);
+                        cmd.Parameters.AddWithValue("@stockby", f.txtStockBy.Text);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        MessageBox.Show("Successfully Added", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }                    
                     f.LoadData();
+
+                    //conn.Open();
+                    //cmd = new SqlCommand("insert into tbStock (refno,pcode,sdate,stock_in_by) values (@refno,@pcode,@sdate,@stockby)", conn);
+                    //cmd.Parameters.AddWithValue("@refno", f.txtRefno.Text);
+                    //cmd.Parameters.AddWithValue("@pcode", dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    //cmd.Parameters.AddWithValue("@sdate", f.dtStockDate.Value);
+                    //cmd.Parameters.AddWithValue("@stockby", f.txtStockBy.Text);
+                    //cmd.ExecuteNonQuery();
+                    //conn.Close();
+                    //MessageBox.Show("Successfully Added", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //f.LoadData();
                 }
             }
         }

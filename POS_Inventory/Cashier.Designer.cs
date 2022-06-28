@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cashier));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.menuBtn = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
@@ -47,12 +50,26 @@
             this.btnSearchProduct = new FontAwesome.Sharp.IconButton();
             this.btnNewTransac = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.menuBtn = new FontAwesome.Sharp.IconButton();
-            this.transaction1 = new POS_Inventory.ControlsCashier.Transaction();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lbDate = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbTransNo = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -71,6 +88,24 @@
             this.panel1.Size = new System.Drawing.Size(1253, 88);
             this.panel1.TabIndex = 6;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // menuBtn
+            // 
+            this.menuBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuBtn.FlatAppearance.BorderSize = 0;
+            this.menuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.menuBtn.IconChar = FontAwesome.Sharp.IconChar.Bars;
+            this.menuBtn.IconColor = System.Drawing.Color.White;
+            this.menuBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.menuBtn.IconSize = 26;
+            this.menuBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.menuBtn.Location = new System.Drawing.Point(1211, 53);
+            this.menuBtn.Name = "menuBtn";
+            this.menuBtn.Size = new System.Drawing.Size(39, 32);
+            this.menuBtn.TabIndex = 4;
+            this.menuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.menuBtn.UseVisualStyleBackColor = true;
+            this.menuBtn.Click += new System.EventHandler(this.menuBtn_Click);
             // 
             // iconButton1
             // 
@@ -346,6 +381,7 @@
             this.btnSearchProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSearchProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearchProduct.UseVisualStyleBackColor = true;
+            this.btnSearchProduct.Click += new System.EventHandler(this.btnSearchProduct_Click);
             // 
             // btnNewTransac
             // 
@@ -371,38 +407,184 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.transaction1);
+            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.lbDate);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.lbTransNo);
+            this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 88);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(974, 599);
             this.panel3.TabIndex = 8;
             // 
-            // menuBtn
+            // dataGridView1
             // 
-            this.menuBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.menuBtn.FlatAppearance.BorderSize = 0;
-            this.menuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.menuBtn.IconChar = FontAwesome.Sharp.IconChar.Bars;
-            this.menuBtn.IconColor = System.Drawing.Color.White;
-            this.menuBtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.menuBtn.IconSize = 26;
-            this.menuBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.menuBtn.Location = new System.Drawing.Point(1211, 53);
-            this.menuBtn.Name = "menuBtn";
-            this.menuBtn.Size = new System.Drawing.Size(39, 32);
-            this.menuBtn.TabIndex = 4;
-            this.menuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.menuBtn.UseVisualStyleBackColor = true;
-            this.menuBtn.Click += new System.EventHandler(this.menuBtn_Click);
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeight = 30;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column8,
+            this.Column4,
+            this.Column6,
+            this.Column7,
+            this.Column2,
+            this.Column3,
+            this.colEdit,
+            this.Column5,
+            this.colDelete});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 75);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(968, 510);
+            this.dataGridView1.TabIndex = 9;
             // 
-            // transaction1
+            // lbDate
             // 
-            this.transaction1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transaction1.Location = new System.Drawing.Point(0, 0);
-            this.transaction1.Name = "transaction1";
-            this.transaction1.Size = new System.Drawing.Size(974, 599);
-            this.transaction1.TabIndex = 0;
+            this.lbDate.AutoSize = true;
+            this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.Location = new System.Drawing.Point(166, 43);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(176, 17);
+            this.lbDate.TabIndex = 8;
+            this.lbDate.Text = "000000000000000000000";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(27, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Transaction Date";
+            // 
+            // lbTransNo
+            // 
+            this.lbTransNo.AutoSize = true;
+            this.lbTransNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTransNo.Location = new System.Drawing.Point(166, 13);
+            this.lbTransNo.Name = "lbTransNo";
+            this.lbTransNo.Size = new System.Drawing.Size(176, 17);
+            this.lbTransNo.TabIndex = 6;
+            this.lbTransNo.Text = "000000000000000000000";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(27, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Transaction No";
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column1.HeaderText = "#";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 38;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "id";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.HeaderText = "Description";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column6.HeaderText = "Price";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 70;
+            // 
+            // Column7
+            // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column7.HeaderText = "Qty";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 54;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.HeaderText = "Discount";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 94;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.HeaderText = "Total";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 70;
+            // 
+            // colEdit
+            // 
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colEdit.HeaderText = "";
+            this.colEdit.Image = ((System.Drawing.Image)(resources.GetObject("colEdit.Image")));
+            this.colEdit.Name = "colEdit";
+            this.colEdit.ReadOnly = true;
+            this.colEdit.Width = 5;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column5.HeaderText = "";
+            this.Column5.Image = ((System.Drawing.Image)(resources.GetObject("Column5.Image")));
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 5;
+            // 
+            // colDelete
+            // 
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colDelete.HeaderText = "";
+            this.colDelete.Image = ((System.Drawing.Image)(resources.GetObject("colDelete.Image")));
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.Width = 5;
             // 
             // Cashier
             // 
@@ -421,6 +603,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -445,6 +629,20 @@
         private FontAwesome.Sharp.IconButton iconButton3;
         private System.Windows.Forms.Panel panel3;
         private FontAwesome.Sharp.IconButton menuBtn;
-        private ControlsCashier.Transaction transaction1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lbDate;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label lbTransNo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewImageColumn colEdit;
+        private System.Windows.Forms.DataGridViewImageColumn Column5;
+        private System.Windows.Forms.DataGridViewImageColumn colDelete;
     }
 }

@@ -131,7 +131,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1103, 489);
+            this.dataGridView1.Size = new System.Drawing.Size(968, 510);
             this.dataGridView1.TabIndex = 4;
             // 
             // Column1
@@ -218,7 +218,7 @@
             this.Controls.Add(this.lbTransNo);
             this.Controls.Add(this.label1);
             this.Name = "Transaction";
-            this.Size = new System.Drawing.Size(1109, 578);
+            this.Size = new System.Drawing.Size(974, 599);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -228,7 +228,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbTransNo;
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -241,5 +240,6 @@
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn Column5;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
+        public System.Windows.Forms.Label lbTransNo;
     }
 }

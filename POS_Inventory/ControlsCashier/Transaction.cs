@@ -23,7 +23,7 @@ namespace POS_Inventory.ControlsCashier
         {
             InitializeComponent();
             conn = new SqlConnection(dbcon.DBConn());
-            lbDate.Text = DateTime.Now.ToLongDateString();
+            lbDate.Text = DateTime.Now.ToLongDateString();           
         }
         public void GetTransNo()
         {
@@ -57,6 +57,26 @@ namespace POS_Inventory.ControlsCashier
                 MessageBox.Show(ex.Message.ToString(),dbcon.GetTitle(),MessageBoxButtons.OK,MessageBoxIcon.Error);
 
             }
+        }
+        public void LoadTransaction()
+        {
+            if (Cashier._transNo != "000000000000000000000")
+            {
+                dataGridView1.Rows.Clear();
+                conn.Open();
+                cmd = new SqlCommand("select tbCart.id,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where transno like '&" + lbTransNo.Text + "%' and status='Pending';", conn);
+                dr = cmd.ExecuteReader();
+                int i = 1; // Number of items/Rows
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), dr["total"].ToString());
+                    i++;
+                }
+
+                dr.Close();
+                conn.Close();
+            }
+            
         }
     }
 }

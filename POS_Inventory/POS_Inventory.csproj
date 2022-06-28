@@ -129,6 +129,18 @@
     <Compile Include="Dialogs\ProductDialog.Designer.cs">
       <DependentUpon>ProductDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\QtyDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\QtyDialog.Designer.cs">
+      <DependentUpon>QtyDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SearchProductDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SearchProductDialog.Designer.cs">
+      <DependentUpon>SearchProductDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\StockProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +181,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ProductDialog.resx">
       <DependentUpon>ProductDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\QtyDialog.resx">
+      <DependentUpon>QtyDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SearchProductDialog.resx">
+      <DependentUpon>SearchProductDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\StockProducts.resx">
       <DependentUpon>StockProducts.cs</DependentUpon>

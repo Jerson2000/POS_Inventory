@@ -154,14 +154,14 @@ namespace POS_Inventory
                 double total = 0;
                 double discount = 0;
                 conn.Open();
-                cmd = new SqlCommand("select tbCart.id,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where transno like '" + lbTransNo.Text + "%' and status='Pending';", conn); //
+                cmd = new SqlCommand("select tbCart.id,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where transno like '" + lbTransNo.Text + "%' and status='Pending';", conn); //
                 dr = cmd.ExecuteReader();
                 int i = 1; // Number of items/Rows
                 while (dr.Read())
                 {
                     total += Double.Parse(dr["total"].ToString());
                     discount += Double.Parse(dr["disc"].ToString());
-                    dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), Double.Parse(dr["total"].ToString()).ToString("#,##0.00"));
+                    dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["pcode"].ToString(), dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), Double.Parse(dr["total"].ToString()).ToString("#,##0.00"));
                     i++;
                     hasRecord = true;
                 }
@@ -298,7 +298,7 @@ namespace POS_Inventory
             }
             else
             {
-                SettlePaymentDialog f = new SettlePaymentDialog();
+                SettlePaymentDialog f = new SettlePaymentDialog(this);
                 f.txtSales.Text = lbTotalAmount.Text;
                 f.ShowDialog();
             }

@@ -8,14 +8,24 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
+using POS_Inventory.Classes;
+using POS_Inventory.ControlsAdmin;
 namespace POS_Inventory.Dialogs
 {
     public partial class SettlePaymentDialog : Form
     {
-        public SettlePaymentDialog()
+        SqlConnection conn;
+        SqlCommand cmd;
+        SqlDataReader dr;
+        GetString dbcon = new GetString();
+        Cashier frm;
+        public SettlePaymentDialog(Cashier f)
         {
             InitializeComponent();
+            conn = new SqlConnection(dbcon.DBConn());
+            this.frm = f;
+
         }
         #region Drag Form 
         // Drag Form 
@@ -121,6 +131,43 @@ namespace POS_Inventory.Dialogs
         private void txtSales_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void btnEnter_Click(object sender, EventArgs e)
+        {
+            double change = Double.Parse(txtChange.Text);
+            if(change < 0 || txtChange.Text == String.Empty)
+            {
+                MessageBox.Show("Insufficient amount. Please enter the correct amount!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                try
+                {
+                    for (int i = 0;i < frm.dataGridView1.Rows.Count; i++)
+                    {
+                        conn.Open();
+                        cmd = new SqlCommand("update tbProduct set qty = qty +"+int.Parse(frm.dataGridView1.Rows[i].Cells[5].Value.ToString())+" where pcode = '"+frm.dataGridView1.Rows[i].Cells[2].Value.ToString()+"';", conn);
+                        cmd.ExecuteNonQuery();                      
+                        conn.Close();
+
+                        conn.Open();
+                        cmd = new SqlCommand("update tbCart set status = 'Sold' where id = '"+ frm.dataGridView1.Rows[i].Cells[1].Value.ToString() + "'; ", conn);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    MessageBox.Show("Payment successfully saved!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frm.LoadTransaction();
+                    frm.btnNewTransac.Enabled = true;
+                    frm.lbTransNo.Text = "000000000000000000000";
+                    this.Dispose();
+                }
+                catch(Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.Message,dbcon.GetTitle(),MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

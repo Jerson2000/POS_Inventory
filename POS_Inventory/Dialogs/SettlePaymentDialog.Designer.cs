@@ -287,6 +287,7 @@
             this.btnEnter.TabIndex = 4;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = false;
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // txtCash
             // 

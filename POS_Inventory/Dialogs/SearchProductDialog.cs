@@ -76,7 +76,7 @@ namespace POS_Inventory.Dialogs
                 if(Cashier._transNo != "000000000000000000000")
                 {
                     conn.Open();
-                    cmd = new SqlCommand("select pcode from tbCart where pcode = '"+ dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", conn);
+                    cmd = new SqlCommand("select pcode from tbCart where pcode = '"+ dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "' and transno = '"+Cashier._transNo+"'", conn);
                     dr = cmd.ExecuteReader();
                     dr.Read();
                     if (dr.HasRows)

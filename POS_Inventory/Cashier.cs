@@ -20,11 +20,15 @@ namespace POS_Inventory
         SqlDataReader dr;
         GetString dbcon = new GetString();
         public static string _transNo ="";
+        string _id;
+        string _price;
+        string _desc;
         public Cashier()
         {
             InitializeComponent();
             conn = new SqlConnection(dbcon.DBConn());
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
+            lbDate.Text = DateTime.Now.ToLongDateString();
             LoadTransaction();
         }
 
@@ -143,22 +147,121 @@ namespace POS_Inventory
         }
         public void LoadTransaction()
         {
-          
-            dataGridView1.Rows.Clear();
-            conn.Open();
-            cmd = new SqlCommand("select tbCart.id,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where transno like '" + lbTransNo.Text + "%' and status='Pending';", conn); //
-            dr = cmd.ExecuteReader();
-            int i = 1; // Number of items/Rows
-            while (dr.Read())
+            try
             {
-                dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), dr["total"].ToString());
-                i++;
-            }
+                dataGridView1.Rows.Clear();
+                double total = 0;
+                double discount = 0;
+                conn.Open();
+                cmd = new SqlCommand("select tbCart.id,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where transno like '" + lbTransNo.Text + "%' and status='Pending';", conn); //
+                dr = cmd.ExecuteReader();
+                int i = 1; // Number of items/Rows
+                while (dr.Read())
+                {
+                    total += Double.Parse(dr["total"].ToString());
+                    discount += Double.Parse(dr["disc"].ToString());
+                    dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), Double.Parse(dr["total"].ToString()).ToString("#,##0.00"));
+                    i++;
+                }
 
-            dr.Close();
-            conn.Close();
+                dr.Close();
+                conn.Close();
+                lbDiscount.Text = discount.ToString("#,##0.00");
+                lbSalesAmount.Text = total.ToString("#,##0.00");
+                GetTotal();
+                
+                
+            }
+            catch(Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message.ToString(), dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
            
 
+        }
+        private void GetTotal()
+        {
+            double sales, discount, vat, vatable,subtotal;
+
+            subtotal = Double.Parse(lbSalesAmount.Text);
+            discount = Double.Parse(lbDiscount.Text);
+            sales = Double.Parse(lbSalesAmount.Text) - discount;            
+            vat = sales * dbcon.GetVat();
+            vatable = sales - vat;
+            lbSalesAmount.Text = sales.ToString("#,##0.00");
+            lbTotalAmount.Text = sales.ToString("#,##0.00");
+            lbVat.Text = vat.ToString("#,##0.00");
+            lbVatable.Text = vatable.ToString("#,##0.00");
+          
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dataGridView1.Columns[e.ColumnIndex].Name;
+            if (colName == "colDelete")
+            {
+                if (MessageBox.Show("Remove this item from the list?", dbcon.GetTitle(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    conn.Open();
+                    cmd = new SqlCommand("delete from tbCart where id ='" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Item successfully removed", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadTransaction();
+                }
+
+            }
+            if (colName == "colMinusQty")
+            {
+
+                int qty = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+                if (qty > 1)
+                {
+                    conn.Open();
+                    cmd = new SqlCommand("update tbCart set qty-=1 where id ='" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    LoadTransaction();
+                }
+                else
+                {
+                    MessageBox.Show("Quantity cannot be less than 1!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+
+            }
+
+            if (colName == "colAddQty")
+            {
+
+                int qty = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+                conn.Open();
+                cmd = new SqlCommand("update tbCart set qty+=1 where id ='" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                LoadTransaction();
+
+
+            }
+        }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            DiscountDialog f = new DiscountDialog(this);
+            f.lbID.Text = _id;
+            f.lbItemD.Text = _desc;
+            f.txtPrice.Text = _price;
+            f.ShowDialog();
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = dataGridView1.CurrentRow.Index;
+            _id = dataGridView1[1, i].Value.ToString();
+            _desc = dataGridView1[2,i].Value.ToString();
+            _price = dataGridView1[3, i].Value.ToString();
         }
     }
 

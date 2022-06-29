@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cashier));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbTotalAmount = new System.Windows.Forms.Label();
             this.menuBtn = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -40,16 +43,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnStockIn = new FontAwesome.Sharp.IconButton();
+            this.btnSettlePayment = new FontAwesome.Sharp.IconButton();
             this.btnUSettings = new FontAwesome.Sharp.IconButton();
             this.btnSysSettings = new FontAwesome.Sharp.IconButton();
             this.btnRecords = new FontAwesome.Sharp.IconButton();
             this.btnBrand = new FontAwesome.Sharp.IconButton();
             this.btnCategory = new FontAwesome.Sharp.IconButton();
-            this.btnProduct = new FontAwesome.Sharp.IconButton();
+            this.btnDiscount = new FontAwesome.Sharp.IconButton();
             this.btnSearchProduct = new FontAwesome.Sharp.IconButton();
             this.btnNewTransac = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lbSalesAmount = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbVatable = new System.Windows.Forms.Label();
+            this.lbVat = new System.Windows.Forms.Label();
+            this.lbDiscount = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,22 +76,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lbTransNo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lbDiscount = new System.Windows.Forms.Label();
-            this.lbVat = new System.Windows.Forms.Label();
-            this.lbVatable = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lbSalesAmount = new System.Windows.Forms.Label();
-            this.lbTotalAmount = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lbTime = new System.Windows.Forms.Label();
+            this.lbDateNow = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -100,6 +107,30 @@
             this.panel1.Size = new System.Drawing.Size(1253, 88);
             this.panel1.TabIndex = 6;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.lbTotalAmount);
+            this.panel4.Location = new System.Drawing.Point(504, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(426, 85);
+            this.panel4.TabIndex = 5;
+            // 
+            // lbTotalAmount
+            // 
+            this.lbTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTotalAmount.AutoSize = true;
+            this.lbTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalAmount.ForeColor = System.Drawing.Color.Green;
+            this.lbTotalAmount.Location = new System.Drawing.Point(79, 24);
+            this.lbTotalAmount.Name = "lbTotalAmount";
+            this.lbTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lbTotalAmount.Size = new System.Drawing.Size(114, 54);
+            this.lbTotalAmount.TabIndex = 13;
+            this.lbTotalAmount.Text = "0.00";
+            this.lbTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuBtn
             // 
@@ -211,13 +242,13 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(122)))));
-            this.panel2.Controls.Add(this.btnStockIn);
+            this.panel2.Controls.Add(this.btnSettlePayment);
             this.panel2.Controls.Add(this.btnUSettings);
             this.panel2.Controls.Add(this.btnSysSettings);
             this.panel2.Controls.Add(this.btnRecords);
             this.panel2.Controls.Add(this.btnBrand);
             this.panel2.Controls.Add(this.btnCategory);
-            this.panel2.Controls.Add(this.btnProduct);
+            this.panel2.Controls.Add(this.btnDiscount);
             this.panel2.Controls.Add(this.btnSearchProduct);
             this.panel2.Controls.Add(this.btnNewTransac);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -226,26 +257,28 @@
             this.panel2.Size = new System.Drawing.Size(279, 599);
             this.panel2.TabIndex = 7;
             // 
-            // btnStockIn
+            // btnSettlePayment
             // 
-            this.btnStockIn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnStockIn.FlatAppearance.BorderSize = 0;
-            this.btnStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockIn.ForeColor = System.Drawing.Color.White;
-            this.btnStockIn.IconChar = FontAwesome.Sharp.IconChar.MoneyBillAlt;
-            this.btnStockIn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(167)))));
-            this.btnStockIn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnStockIn.IconSize = 30;
-            this.btnStockIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockIn.Location = new System.Drawing.Point(27, 140);
-            this.btnStockIn.Name = "btnStockIn";
-            this.btnStockIn.Size = new System.Drawing.Size(240, 29);
-            this.btnStockIn.TabIndex = 3;
-            this.btnStockIn.Text = "[ F4 ] Settle Payment";
-            this.btnStockIn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnSettlePayment.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSettlePayment.Enabled = false;
+            this.btnSettlePayment.FlatAppearance.BorderSize = 0;
+            this.btnSettlePayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettlePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettlePayment.ForeColor = System.Drawing.Color.White;
+            this.btnSettlePayment.IconChar = FontAwesome.Sharp.IconChar.MoneyBillAlt;
+            this.btnSettlePayment.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(167)))));
+            this.btnSettlePayment.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSettlePayment.IconSize = 30;
+            this.btnSettlePayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettlePayment.Location = new System.Drawing.Point(27, 140);
+            this.btnSettlePayment.Name = "btnSettlePayment";
+            this.btnSettlePayment.Size = new System.Drawing.Size(240, 29);
+            this.btnSettlePayment.TabIndex = 3;
+            this.btnSettlePayment.Text = "[ F4 ] Settle Payment";
+            this.btnSettlePayment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettlePayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSettlePayment.UseVisualStyleBackColor = true;
+            this.btnSettlePayment.Click += new System.EventHandler(this.btnSettlePayment_Click);
             // 
             // btnUSettings
             // 
@@ -352,27 +385,27 @@
             this.btnCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCategory.UseVisualStyleBackColor = true;
             // 
-            // btnProduct
+            // btnDiscount
             // 
-            this.btnProduct.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnProduct.FlatAppearance.BorderSize = 0;
-            this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProduct.ForeColor = System.Drawing.Color.White;
-            this.btnProduct.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnProduct.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(167)))));
-            this.btnProduct.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnProduct.IconSize = 30;
-            this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.Location = new System.Drawing.Point(26, 105);
-            this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(241, 29);
-            this.btnProduct.TabIndex = 3;
-            this.btnProduct.Text = "[ F3 ] Add Discount";
-            this.btnProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProduct.UseVisualStyleBackColor = true;
-            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            this.btnDiscount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDiscount.FlatAppearance.BorderSize = 0;
+            this.btnDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDiscount.ForeColor = System.Drawing.Color.White;
+            this.btnDiscount.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnDiscount.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(167)))));
+            this.btnDiscount.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDiscount.IconSize = 30;
+            this.btnDiscount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDiscount.Location = new System.Drawing.Point(26, 105);
+            this.btnDiscount.Name = "btnDiscount";
+            this.btnDiscount.Size = new System.Drawing.Size(241, 29);
+            this.btnDiscount.TabIndex = 3;
+            this.btnDiscount.Text = "[ F3 ] Add Discount";
+            this.btnDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDiscount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDiscount.UseVisualStyleBackColor = true;
+            this.btnDiscount.Click += new System.EventHandler(this.btnDiscount_Click);
             // 
             // btnSearchProduct
             // 
@@ -420,6 +453,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.lbSalesAmount);
             this.panel3.Controls.Add(this.label8);
@@ -438,6 +472,94 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(974, 599);
             this.panel3.TabIndex = 8;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(717, 417);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(149, 26);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Sales Amount";
+            // 
+            // lbSalesAmount
+            // 
+            this.lbSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSalesAmount.AutoSize = true;
+            this.lbSalesAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSalesAmount.Location = new System.Drawing.Point(888, 417);
+            this.lbSalesAmount.Name = "lbSalesAmount";
+            this.lbSalesAmount.Size = new System.Drawing.Size(54, 26);
+            this.lbSalesAmount.TabIndex = 12;
+            this.lbSalesAmount.Text = "0.00";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(717, 537);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 26);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Vatable";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(717, 494);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 26);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Vat";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(717, 456);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 26);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Discount";
+            // 
+            // lbVatable
+            // 
+            this.lbVatable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbVatable.AutoSize = true;
+            this.lbVatable.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVatable.Location = new System.Drawing.Point(888, 537);
+            this.lbVatable.Name = "lbVatable";
+            this.lbVatable.Size = new System.Drawing.Size(54, 26);
+            this.lbVatable.TabIndex = 10;
+            this.lbVatable.Text = "0.00";
+            // 
+            // lbVat
+            // 
+            this.lbVat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbVat.AutoSize = true;
+            this.lbVat.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVat.Location = new System.Drawing.Point(888, 494);
+            this.lbVat.Name = "lbVat";
+            this.lbVat.Size = new System.Drawing.Size(54, 26);
+            this.lbVat.TabIndex = 10;
+            this.lbVat.Text = "0.00";
+            // 
+            // lbDiscount
+            // 
+            this.lbDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDiscount.AutoSize = true;
+            this.lbDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDiscount.Location = new System.Drawing.Point(888, 456);
+            this.lbDiscount.Name = "lbDiscount";
+            this.lbDiscount.Size = new System.Drawing.Size(54, 26);
+            this.lbDiscount.TabIndex = 10;
+            this.lbDiscount.Text = "0.00";
             // 
             // dataGridView1
             // 
@@ -609,116 +731,55 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Transaction No";
             // 
-            // label6
+            // panel5
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(739, 456);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 26);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Discount";
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(188)))), ((int)(((byte)(192)))));
+            this.panel5.Controls.Add(this.lbDateNow);
+            this.panel5.Controls.Add(this.lbTime);
+            this.panel5.Location = new System.Drawing.Point(5, 393);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(683, 203);
+            this.panel5.TabIndex = 13;
             // 
-            // label7
+            // lbTime
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(739, 494);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 26);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Vat";
+            this.lbTime.AutoSize = true;
+            this.lbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
+            this.lbTime.Location = new System.Drawing.Point(28, 124);
+            this.lbTime.Name = "lbTime";
+            this.lbTime.Size = new System.Drawing.Size(127, 54);
+            this.lbTime.TabIndex = 7;
+            this.lbTime.Text = "Time";
             // 
-            // label8
+            // lbDateNow
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(739, 537);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 26);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Vatable";
+            this.lbDateNow.AutoSize = true;
+            this.lbDateNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
+            this.lbDateNow.Location = new System.Drawing.Point(25, 45);
+            this.lbDateNow.Name = "lbDateNow";
+            this.lbDateNow.Size = new System.Drawing.Size(122, 54);
+            this.lbDateNow.TabIndex = 7;
+            this.lbDateNow.Text = "Date";
             // 
-            // lbDiscount
+            // timer1
             // 
-            this.lbDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbDiscount.AutoSize = true;
-            this.lbDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDiscount.Location = new System.Drawing.Point(888, 456);
-            this.lbDiscount.Name = "lbDiscount";
-            this.lbDiscount.Size = new System.Drawing.Size(54, 26);
-            this.lbDiscount.TabIndex = 10;
-            this.lbDiscount.Text = "0.00";
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lbVat
+            // label5
             // 
-            this.lbVat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbVat.AutoSize = true;
-            this.lbVat.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVat.Location = new System.Drawing.Point(888, 494);
-            this.lbVat.Name = "lbVat";
-            this.lbVat.Size = new System.Drawing.Size(54, 26);
-            this.lbVat.TabIndex = 10;
-            this.lbVat.Text = "0.00";
-            // 
-            // lbVatable
-            // 
-            this.lbVatable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbVatable.AutoSize = true;
-            this.lbVatable.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVatable.Location = new System.Drawing.Point(888, 537);
-            this.lbVatable.Name = "lbVatable";
-            this.lbVatable.Size = new System.Drawing.Size(54, 26);
-            this.lbVatable.TabIndex = 10;
-            this.lbVatable.Text = "0.00";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Controls.Add(this.lbTotalAmount);
-            this.panel4.Location = new System.Drawing.Point(504, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(426, 85);
-            this.panel4.TabIndex = 5;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(739, 417);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(141, 26);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Total Amount";
-            // 
-            // lbSalesAmount
-            // 
-            this.lbSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbSalesAmount.AutoSize = true;
-            this.lbSalesAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSalesAmount.Location = new System.Drawing.Point(888, 417);
-            this.lbSalesAmount.Name = "lbSalesAmount";
-            this.lbSalesAmount.Size = new System.Drawing.Size(54, 26);
-            this.lbSalesAmount.TabIndex = 12;
-            this.lbSalesAmount.Text = "0.00";
-            // 
-            // lbTotalAmount
-            // 
-            this.lbTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbTotalAmount.AutoSize = true;
-            this.lbTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalAmount.ForeColor = System.Drawing.Color.Green;
-            this.lbTotalAmount.Location = new System.Drawing.Point(16, 24);
-            this.lbTotalAmount.Name = "lbTotalAmount";
-            this.lbTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lbTotalAmount.Size = new System.Drawing.Size(114, 54);
-            this.lbTotalAmount.TabIndex = 13;
-            this.lbTotalAmount.Text = "0.00";
-            this.lbTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Green;
+            this.label5.Location = new System.Drawing.Point(19, 24);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label5.Size = new System.Drawing.Size(54, 54);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "₱";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Cashier
             // 
@@ -734,13 +795,15 @@
             this.Text = "Cashier";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -751,13 +814,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
-        private FontAwesome.Sharp.IconButton btnStockIn;
+        private FontAwesome.Sharp.IconButton btnSettlePayment;
         private FontAwesome.Sharp.IconButton btnUSettings;
         private FontAwesome.Sharp.IconButton btnSysSettings;
         private FontAwesome.Sharp.IconButton btnRecords;
         private FontAwesome.Sharp.IconButton btnBrand;
         private FontAwesome.Sharp.IconButton btnCategory;
-        private FontAwesome.Sharp.IconButton btnProduct;
+        private FontAwesome.Sharp.IconButton btnDiscount;
         private FontAwesome.Sharp.IconButton btnSearchProduct;
         private FontAwesome.Sharp.IconButton btnNewTransac;
         private FontAwesome.Sharp.IconButton iconButton1;
@@ -790,5 +853,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbSalesAmount;
         private System.Windows.Forms.Label lbTotalAmount;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label lbTime;
+        private System.Windows.Forms.Label lbDateNow;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label5;
     }
 }

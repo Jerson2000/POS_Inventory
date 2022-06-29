@@ -20,7 +20,7 @@ namespace POS_Inventory
         SqlDataReader dr;
         GetString dbcon = new GetString();
         public static string _transNo ="";
-        string _id;
+        string _id = "";
         string _price;
         string _desc;
         public Cashier()
@@ -149,6 +149,7 @@ namespace POS_Inventory
         {
             try
             {
+                bool hasRecord = false;
                 dataGridView1.Rows.Clear();
                 double total = 0;
                 double discount = 0;
@@ -162,6 +163,7 @@ namespace POS_Inventory
                     discount += Double.Parse(dr["disc"].ToString());
                     dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), Double.Parse(dr["total"].ToString()).ToString("#,##0.00"));
                     i++;
+                    hasRecord = true;
                 }
 
                 dr.Close();
@@ -170,6 +172,15 @@ namespace POS_Inventory
                 lbSalesAmount.Text = total.ToString("#,##0.00");
                 GetTotal();
                 
+                if(hasRecord == true) 
+                { 
+                    btnSettlePayment.Enabled = true; btnDiscount.Enabled = true; 
+                }
+                else 
+                {
+                    btnSettlePayment.Enabled = false;
+                    btnDiscount.Enabled = false;
+                }
                 
             }
             catch(Exception ex)
@@ -247,13 +258,22 @@ namespace POS_Inventory
             }
         }
 
-        private void btnProduct_Click(object sender, EventArgs e)
+        private void btnDiscount_Click(object sender, EventArgs e)
         {
-            DiscountDialog f = new DiscountDialog(this);
-            f.lbID.Text = _id;
-            f.lbItemD.Text = _desc;
-            f.txtPrice.Text = _price;
-            f.ShowDialog();
+            if(_id != String.Empty)
+            {
+                DiscountDialog f = new DiscountDialog(this);
+                f.lbID.Text = _id;
+                f.lbItemD.Text = _desc;
+                f.txtPrice.Text = _price;
+                f.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("No current item/s selected!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -262,6 +282,27 @@ namespace POS_Inventory
             _id = dataGridView1[1, i].Value.ToString();
             _desc = dataGridView1[2,i].Value.ToString();
             _price = dataGridView1[3, i].Value.ToString();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lbDateNow.Text = DateTime.Now.ToLongDateString();
+            lbTime.Text = DateTime.Now.ToString("hh:MM:ss tt");
+        }
+
+        private void btnSettlePayment_Click(object sender, EventArgs e)
+        {
+            if (lbTransNo.Text == "000000000000000000000")
+            {
+                MessageBox.Show("No current transaction!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                SettlePaymentDialog f = new SettlePaymentDialog();
+                f.txtSales.Text = lbTotalAmount.Text;
+                f.ShowDialog();
+            }
+           
         }
     }
 

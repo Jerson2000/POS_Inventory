@@ -147,6 +147,12 @@
     <Compile Include="Dialogs\SearchProductDialog.Designer.cs">
       <DependentUpon>SearchProductDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\SettlePaymentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SettlePaymentDialog.Designer.cs">
+      <DependentUpon>SettlePaymentDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\StockProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SearchProductDialog.resx">
       <DependentUpon>SearchProductDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SettlePaymentDialog.resx">
+      <DependentUpon>SettlePaymentDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\StockProducts.resx">
       <DependentUpon>StockProducts.cs</DependentUpon>

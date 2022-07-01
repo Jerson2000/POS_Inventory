@@ -156,6 +156,11 @@ namespace POS_Inventory.Dialogs
                         cmd.ExecuteNonQuery();
                         conn.Close();
                     }
+
+                    PrintDialog print = new PrintDialog(frm);
+                    print.LoadReport();
+                    print.ShowDialog();
+
                     MessageBox.Show("Payment successfully saved!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frm.LoadTransaction();
                     frm.btnNewTransac.Enabled = true;

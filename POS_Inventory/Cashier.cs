@@ -227,7 +227,7 @@ namespace POS_Inventory
             if (colName == "colMinusQty")
             {
 
-                int qty = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+                int qty = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString());
                 if (qty > 1)
                 {
                     conn.Open();
@@ -247,7 +247,7 @@ namespace POS_Inventory
             if (colName == "colAddQty")
             {
 
-                int qty = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+                int qty = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString());
                 conn.Open();
                 cmd = new SqlCommand("update tbCart set qty+=1 where id ='" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", conn);
                 cmd.ExecuteNonQuery();

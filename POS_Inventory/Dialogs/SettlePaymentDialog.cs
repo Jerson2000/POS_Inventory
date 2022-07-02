@@ -158,7 +158,7 @@ namespace POS_Inventory.Dialogs
                     }
 
                     PrintDialog print = new PrintDialog(frm);
-                    print.LoadReport();
+                    print.LoadReport(txtCash.Text,txtChange.Text);
                     print.ShowDialog();
 
                     MessageBox.Show("Payment successfully saved!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);

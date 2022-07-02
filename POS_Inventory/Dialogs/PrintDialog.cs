@@ -19,6 +19,10 @@ namespace POS_Inventory.Dialogs
         SqlDataReader dr;
         GetString dbcon = new GetString();
         Cashier f;
+
+        string _store = "Jerson Convience Store";
+        string _address = "Davao City";
+
         public PrintDialog(Cashier f)
         {
             InitializeComponent();
@@ -32,7 +36,7 @@ namespace POS_Inventory.Dialogs
 
             this.reportViewer1.RefreshReport();
         }
-        public void LoadReport()
+        public void LoadReport(string cash,string change)
         {
             ReportDataSource reportDataSource;
             try
@@ -52,6 +56,27 @@ namespace POS_Inventory.Dialogs
                     
                     da.Fill(ds.Tables["TableSold"]);
                     conn.Close();
+
+
+                    ReportParameter pVatable = new ReportParameter("pVatable", f.lbVatable.Text);
+                    ReportParameter pVat = new ReportParameter("pVat", f.lbVat.Text);
+                    ReportParameter pDiscount = new ReportParameter("pDiscount", f.lbDiscount.Text);
+                    ReportParameter pTotal = new ReportParameter("pTotal", f.lbSalesAmount.Text);
+                    ReportParameter pCash = new ReportParameter("pCash", cash);
+                    ReportParameter pChange = new ReportParameter("pChange", change);
+                    ReportParameter pStore = new ReportParameter("pStore", _store);
+                    ReportParameter pAddress = new ReportParameter("pAddress", _address);
+                    ReportParameter pTransaction = new ReportParameter("pTransaction","Invoice #:" + f.lbTransNo.Text);
+
+                    reportViewer1.LocalReport.SetParameters(pVatable);
+                    reportViewer1.LocalReport.SetParameters(pVat);
+                    reportViewer1.LocalReport.SetParameters(pDiscount);
+                    reportViewer1.LocalReport.SetParameters(pTotal);
+                    reportViewer1.LocalReport.SetParameters(pCash);
+                    reportViewer1.LocalReport.SetParameters(pChange);
+                    reportViewer1.LocalReport.SetParameters(pStore);
+                    reportViewer1.LocalReport.SetParameters(pAddress);
+                    reportViewer1.LocalReport.SetParameters(pTransaction);
 
                     reportDataSource = new ReportDataSource("DataSet1", ds.Tables["TableSold"]);
                     reportViewer1.LocalReport.DataSources.Add(reportDataSource);

@@ -280,8 +280,8 @@ namespace POS_Inventory
         {
             int i = dataGridView1.CurrentRow.Index;
             _id = dataGridView1[1, i].Value.ToString();
-            _desc = dataGridView1[2,i].Value.ToString();
-            _price = dataGridView1[3, i].Value.ToString();
+            _desc = dataGridView1[3,i].Value.ToString();
+            _price = dataGridView1[4, i].Value.ToString();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

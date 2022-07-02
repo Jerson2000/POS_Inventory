@@ -446,8 +446,8 @@
         private System.Windows.Forms.Button btn9;
         private System.Windows.Forms.Button btnC;
         private System.Windows.Forms.Button btnEnter;
-        private MetroFramework.Controls.MetroTextBox txtCash;
         public MetroFramework.Controls.MetroTextBox txtSales;
         public MetroFramework.Controls.MetroTextBox txtChange;
+        public MetroFramework.Controls.MetroTextBox txtCash;
     }
 }

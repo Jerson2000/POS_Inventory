@@ -304,6 +304,12 @@ namespace POS_Inventory
             }
            
         }
+
+        private void btnBrand_Click(object sender, EventArgs e)
+        {
+            DailySalesDialog f = new DailySalesDialog();
+            f.ShowDialog();
+        }
     }
 
 }

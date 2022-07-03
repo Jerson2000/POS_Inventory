@@ -75,9 +75,9 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 20);
+            this.label1.Size = new System.Drawing.Size(99, 20);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Sold Item/s Report";
+            this.label1.Text = "Print Preview";
             // 
             // iconButton1
             // 

@@ -31,12 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dataSet1 = new POS_Inventory.DataSet1();
-            this.dtSoldBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TableSoldBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtSoldBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TableSoldBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,16 +51,6 @@
             this.dataSet1.DataSetName = "DataSet1";
             this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // dtSoldBindingSource
-            // 
-            this.dtSoldBindingSource.DataMember = "dtSold";
-            this.dtSoldBindingSource.DataSource = this.dataSet1;
-            // 
-            // DataTable1BindingSource
-            // 
-            this.DataTable1BindingSource.DataMember = "DataTable1";
-            this.DataTable1BindingSource.DataSource = this.dataSet1;
-            // 
             // TableSoldBindingSource
             // 
             this.TableSoldBindingSource.DataMember = "TableSold";
@@ -81,8 +67,6 @@
             this.Text = "Print Preview";
             this.Load += new System.EventHandler(this.PrintDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtSoldBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TableSoldBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -92,8 +76,6 @@
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private DataSet1 dataSet1;
-        private System.Windows.Forms.BindingSource dtSoldBindingSource;
-        private System.Windows.Forms.BindingSource DataTable1BindingSource;
         private System.Windows.Forms.BindingSource TableSoldBindingSource;
     }
 }

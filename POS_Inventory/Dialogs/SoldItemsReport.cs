@@ -10,25 +10,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using POS_Inventory.Classes;
-using POS_Inventory.Dialogs;
+using Microsoft.Reporting.WinForms;
 
 namespace POS_Inventory.Dialogs
 {
-    public partial class DailySalesDialog : Form
+    public partial class SoldItemsReport : Form
     {
         SqlConnection conn;
         SqlCommand cmd;
         SqlDataReader dr;
-        GetString dbcon = new GetString();      
-        public DailySalesDialog()
+        GetString dbcon = new GetString();
+        DailySalesDialog f;
+        public SoldItemsReport(DailySalesDialog f)
         {
             InitializeComponent();
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             conn = new SqlConnection(dbcon.DBConn());
-            dateStart.Value = DateTime.Now;
-            dateEnd.Value = DateTime.Now;
-            LoadData();
+            this.f = f;
         }
+
         #region Drag Form 
         // Drag Form 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -43,7 +43,7 @@ namespace POS_Inventory.Dialogs
 
         }
         #endregion
-
+        #region Custom Control Box
         private void iconButton1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -66,47 +66,47 @@ namespace POS_Inventory.Dialogs
 
             }
         }
+        #endregion
+        private void SoldItemsReport_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
+
+
         public void LoadData()
         {
             try
             {
-                double _total = 0;
-                dataGridView1.Rows.Clear();
+                ReportDataSource reportDataSource;
+                this.reportViewer1.LocalReport.ReportEmbeddedResource = "POS_Inventory.SoldItemsReport.rdlc";
+                this.reportViewer1.LocalReport.DataSources.Clear();
+
+                DataSet1 ds = new DataSet1();
+                SqlDataAdapter da = new SqlDataAdapter();
                 conn.Open();
-                cmd = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + dateEnd.Value.ToString("yyyy-MM-dd") + "';", conn);
-                dr = cmd.ExecuteReader();
-                int i = 1;
-                while (dr.Read())
-                {
-                    i++;
-                    _total += Double.Parse(dr["total"].ToString());
-                    dataGridView1.Rows.Add(i, dr["id"].ToString(),dr["transno"].ToString(),dr["pcode"].ToString(),dr["pdesc"].ToString(),dr["price"].ToString(),dr["qty"].ToString(),dr["disc"].ToString(),dr["total"]);
-                }
-                dr.Close();
+            
+                da.SelectCommand = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + f.dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + f.dateEnd.Value.ToString("yyyy-MM-dd") + "';", conn);
+                da.Fill(ds.Tables["dtSoldItemsReport"]);
                 conn.Close();
-                lbTotal.Text = _total.ToString("#,##0.00");
+
+
+                reportDataSource = new ReportDataSource("DataSet1", ds.Tables["dtSoldItemsReport"]);
+                reportViewer1.LocalReport.DataSources.Add(reportDataSource);
+                reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                reportViewer1.ZoomMode = ZoomMode.Percent;
+                reportViewer1.ZoomPercent = 75;
             }
             catch(Exception ex)
             {
                 conn.Close();
-                MessageBox.Show(ex.Message, dbcon.GetTitle());
-
+                MessageBox.Show(ex.Message);
             }
+          
+           
+
         }
 
-        private void dateStart_ValueChanged(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-      
 
-        private void iconButton2_Click(object sender, EventArgs e)
-        {
-            SoldItemsReport f = new SoldItemsReport(this);
-            f.LoadData();
-            f.ShowDialog();
-        }
-
-        
     }
 }

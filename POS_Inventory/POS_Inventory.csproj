@@ -191,6 +191,12 @@
     <Compile Include="Dialogs\SettlePaymentDialog.Designer.cs">
       <DependentUpon>SettlePaymentDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\SoldItemsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SoldItemsReport.Designer.cs">
+      <DependentUpon>SoldItemsReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\StockProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +256,9 @@
     <EmbeddedResource Include="Dialogs\SettlePaymentDialog.resx">
       <DependentUpon>SettlePaymentDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SoldItemsReport.resx">
+      <DependentUpon>SoldItemsReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\StockProducts.resx">
       <DependentUpon>StockProducts.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,9 +271,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Report1.rdlc" />
-    <EmbeddedResource Include="Report2.rdlc" />
     <EmbeddedResource Include="Report3.rdlc" />
+    <EmbeddedResource Include="SoldItemsReport.rdlc" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>

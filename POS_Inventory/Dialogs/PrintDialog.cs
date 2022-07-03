@@ -42,16 +42,13 @@ namespace POS_Inventory.Dialogs
             try
             {
                 if(Cashier._transNo != "000000000000000000000")
-                {
-                    //this.reportViewer1.LocalReport.ReportPath = Application.StartupPath + @"\Reports\Report1.rdlc";
+                {                   
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "POS_Inventory.Report3.rdlc";
                     this.reportViewer1.LocalReport.DataSources.Clear();
 
                     DataSet1 ds = new DataSet1();
                     SqlDataAdapter da = new SqlDataAdapter();
-                    conn.Open();
-                    //da.SelectCommand = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total,tbCart.sdate,tbCart.status, tbProduct.pdesc from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where transno like '" + f.lbTransNo.Text + "' and status='Pending';", conn);
-                    //da.SelectCommand = new SqlCommand("select * from tbCart where status = 'Pending'", conn);
+                    conn.Open();                    
                     da.SelectCommand = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total,tbCart.sdate,tbCart.status from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where transno = '" + Cashier._transNo + "';", conn);
                     
                     da.Fill(ds.Tables["TableSold"]);
@@ -82,7 +79,7 @@ namespace POS_Inventory.Dialogs
                     reportViewer1.LocalReport.DataSources.Add(reportDataSource);
                     reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                     reportViewer1.ZoomMode = ZoomMode.Percent;
-                    reportViewer1.ZoomPercent = 50;
+                    reportViewer1.ZoomPercent = 75;
                 }
                 
             }

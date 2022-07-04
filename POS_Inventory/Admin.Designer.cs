@@ -43,7 +43,7 @@
             this.btnBrand = new FontAwesome.Sharp.IconButton();
             this.btnCategory = new FontAwesome.Sharp.IconButton();
             this.btnProduct = new FontAwesome.Sharp.IconButton();
-            this.btnSales = new FontAwesome.Sharp.IconButton();
+            this.btnPOS = new FontAwesome.Sharp.IconButton();
             this.btnDashboard = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,6 +54,7 @@
             this.stockIn1 = new POS_Inventory.ControlsAdmin.StockIn();
             this.category1 = new POS_Inventory.ControlsAdmin.Category();
             this.brand1 = new POS_Inventory.ControlsAdmin.Brand();
+            this.userSettings1 = new POS_Inventory.ControlsAdmin.UserSettings();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -158,7 +159,7 @@
             this.panel2.Controls.Add(this.btnBrand);
             this.panel2.Controls.Add(this.btnCategory);
             this.panel2.Controls.Add(this.btnProduct);
-            this.panel2.Controls.Add(this.btnSales);
+            this.panel2.Controls.Add(this.btnPOS);
             this.panel2.Controls.Add(this.btnDashboard);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
@@ -230,6 +231,7 @@
             this.btnUSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUSettings.UseVisualStyleBackColor = true;
+            this.btnUSettings.Click += new System.EventHandler(this.btnUSettings_Click);
             // 
             // btnSysSettings
             // 
@@ -334,25 +336,25 @@
             this.btnProduct.UseVisualStyleBackColor = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
-            // btnSales
+            // btnPOS
             // 
-            this.btnSales.FlatAppearance.BorderSize = 0;
-            this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSales.ForeColor = System.Drawing.Color.White;
-            this.btnSales.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
-            this.btnSales.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnSales.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSales.IconSize = 30;
-            this.btnSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSales.Location = new System.Drawing.Point(13, 248);
-            this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(232, 29);
-            this.btnSales.TabIndex = 3;
-            this.btnSales.Text = "Manage Sales";
-            this.btnSales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSales.UseVisualStyleBackColor = true;
+            this.btnPOS.FlatAppearance.BorderSize = 0;
+            this.btnPOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPOS.ForeColor = System.Drawing.Color.White;
+            this.btnPOS.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
+            this.btnPOS.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnPOS.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPOS.IconSize = 30;
+            this.btnPOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPOS.Location = new System.Drawing.Point(13, 248);
+            this.btnPOS.Name = "btnPOS";
+            this.btnPOS.Size = new System.Drawing.Size(232, 29);
+            this.btnPOS.TabIndex = 3;
+            this.btnPOS.Text = "POS";
+            this.btnPOS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPOS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPOS.UseVisualStyleBackColor = true;
             // 
             // btnDashboard
             // 
@@ -416,6 +418,7 @@
             this.panelContainer.Controls.Add(this.stockIn1);
             this.panelContainer.Controls.Add(this.category1);
             this.panelContainer.Controls.Add(this.brand1);
+            this.panelContainer.Controls.Add(this.userSettings1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(259, 46);
             this.panelContainer.Name = "panelContainer";
@@ -463,6 +466,14 @@
             this.brand1.Size = new System.Drawing.Size(994, 641);
             this.brand1.TabIndex = 0;
             // 
+            // userSettings1
+            // 
+            this.userSettings1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userSettings1.Location = new System.Drawing.Point(0, 0);
+            this.userSettings1.Name = "userSettings1";
+            this.userSettings1.Size = new System.Drawing.Size(994, 641);
+            this.userSettings1.TabIndex = 5;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -502,7 +513,7 @@
         private FontAwesome.Sharp.IconButton btnBrand;
         private FontAwesome.Sharp.IconButton btnCategory;
         private FontAwesome.Sharp.IconButton btnProduct;
-        private FontAwesome.Sharp.IconButton btnSales;
+        private FontAwesome.Sharp.IconButton btnPOS;
         private FontAwesome.Sharp.IconButton btnLogout;
         private System.Windows.Forms.Panel panelContainer;
         private ControlsAdmin.Brand brand1;
@@ -511,6 +522,7 @@
         private ControlsAdmin.Product product1;
         private FontAwesome.Sharp.IconButton btnStockIn;
         private ControlsAdmin.StockIn stockIn1;
+        private ControlsAdmin.UserSettings userSettings1;
     }
 }
 

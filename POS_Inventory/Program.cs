@@ -16,7 +16,7 @@ namespace POS_Inventory
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Cashier());
+            Application.Run(new Admin());
         }
     }
 }

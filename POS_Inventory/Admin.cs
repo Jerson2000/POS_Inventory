@@ -81,6 +81,7 @@ namespace POS_Inventory
             category1.Visible = false;
             product1.Visible = false;
             stockIn1.Visible = false;
+            userSettings1.Visible = false;
 
             control.Visible = true;
 
@@ -196,6 +197,13 @@ namespace POS_Inventory
             SetActivePanel(stockIn1);
             stockIn1.LoadData();
         }
+
+        private void btnUSettings_Click(object sender, EventArgs e)
+        {
+            SetActivePanel(userSettings1);
+        }
+
+      
     }
 
 }

@@ -69,7 +69,7 @@ namespace POS_Inventory
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void iconButton3_Click(object sender, EventArgs e)

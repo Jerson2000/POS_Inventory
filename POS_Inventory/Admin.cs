@@ -18,12 +18,14 @@ namespace POS_Inventory
         SqlCommand cmd;
         SqlDataReader dr;
         GetString dbcon = new GetString();
-        public Admin()
+        Login sec;
+        public Admin(Login f)
         {
             InitializeComponent();
             conn = new SqlConnection(dbcon.DBConn());
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             SetActivePanel(dashboard1);
+            this.sec = f;
         }
 
         #region Drag Form 
@@ -64,8 +66,21 @@ namespace POS_Inventory
         private void iconButton1_Click(object sender, EventArgs e)
         {
             this.Close();
+            
         }
-
+        private void Admin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(MessageBox.Show("Logging Out? click YES to confirm!","Warning",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                Login f = new Login();
+                f.Show();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+            
+        }
         private void iconButton3_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -203,7 +218,10 @@ namespace POS_Inventory
             SetActivePanel(userSettings1);
         }
 
-      
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 
 }

@@ -45,8 +45,8 @@
             this.btnProduct = new FontAwesome.Sharp.IconButton();
             this.btnPOS = new FontAwesome.Sharp.IconButton();
             this.btnDashboard = new FontAwesome.Sharp.IconButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbRole = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.dashboard1 = new POS_Inventory.ControlsAdmin.Dashboard();
@@ -161,8 +161,8 @@
             this.panel2.Controls.Add(this.btnProduct);
             this.panel2.Controls.Add(this.btnPOS);
             this.panel2.Controls.Add(this.btnDashboard);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lbRole);
+            this.panel2.Controls.Add(this.lbName);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 46);
@@ -211,6 +211,7 @@
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnUSettings
             // 
@@ -377,28 +378,28 @@
             this.btnDashboard.UseVisualStyleBackColor = true;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // label2
+            // lbRole
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(68, 179);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 14);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Administrator";
+            this.lbRole.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRole.ForeColor = System.Drawing.Color.White;
+            this.lbRole.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbRole.Location = new System.Drawing.Point(13, 179);
+            this.lbRole.Name = "lbRole";
+            this.lbRole.Size = new System.Drawing.Size(232, 14);
+            this.lbRole.TabIndex = 1;
+            this.lbRole.Text = "Administrator";
+            this.lbRole.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lbName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(184)))), ((int)(((byte)(160)))));
-            this.label1.Location = new System.Drawing.Point(80, 157);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Username";
+            this.lbName.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(184)))), ((int)(((byte)(160)))));
+            this.lbName.Location = new System.Drawing.Point(16, 157);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(228, 16);
+            this.lbName.TabIndex = 1;
+            this.lbName.Text = "Username";
+            this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -486,9 +487,9 @@
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Admin_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelContainer.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -503,9 +504,7 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconButton btnDashboard;
         private FontAwesome.Sharp.IconButton btnUSettings;
         private FontAwesome.Sharp.IconButton btnSysSettings;
@@ -523,6 +522,8 @@
         private FontAwesome.Sharp.IconButton btnStockIn;
         private ControlsAdmin.StockIn stockIn1;
         private ControlsAdmin.UserSettings userSettings1;
+        public System.Windows.Forms.Label lbName;
+        public System.Windows.Forms.Label lbRole;
     }
 }
 

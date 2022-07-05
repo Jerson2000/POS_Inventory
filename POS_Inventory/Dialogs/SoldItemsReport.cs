@@ -85,11 +85,24 @@ namespace POS_Inventory.Dialogs
                 DataSet1 ds = new DataSet1();
                 SqlDataAdapter da = new SqlDataAdapter();
                 conn.Open();
-            
-                da.SelectCommand = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + f.dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + f.dateEnd.Value.ToString("yyyy-MM-dd") + "';", conn);
-                da.Fill(ds.Tables["dtSoldItemsReport"]);
+                if (f.cbCashier.Text == "All Cashier")
+                {
+                    da.SelectCommand = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + f.dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + f.dateEnd.Value.ToString("yyyy-MM-dd") + "';", conn);
+                }
+                else
+                {
+                    da.SelectCommand = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + f.dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + f.dateEnd.Value.ToString("yyyy-MM-dd") + "' and cashier like '" + f.cbCashier.Text + "';", conn);
+                }
+                    da.Fill(ds.Tables["dtSoldItemsReport"]);
                 conn.Close();
 
+                ReportParameter pCashier = new ReportParameter("pCashier", f.cbCashier.Text);
+                ReportParameter pDate = new ReportParameter("pDate", "Date From: ''"+f.dateStart.Value.ToShortDateString()+"'' To ''"+f.dateEnd.Value.ToShortDateString()+"''");
+                ReportParameter pHeader = new ReportParameter("pHeader", "SALES REPORT");
+
+                reportViewer1.LocalReport.SetParameters(pCashier);
+                reportViewer1.LocalReport.SetParameters(pDate);
+                reportViewer1.LocalReport.SetParameters(pHeader);
 
                 reportDataSource = new ReportDataSource("DataSet1", ds.Tables["dtSoldItemsReport"]);
                 reportViewer1.LocalReport.DataSources.Add(reportDataSource);

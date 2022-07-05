@@ -149,6 +149,12 @@
     <Compile Include="Dialogs\BrandDialog.Designer.cs">
       <DependentUpon>BrandDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\CancelSaleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\CancelSaleDialog.Designer.cs">
+      <DependentUpon>CancelSaleDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\CategoryDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\BrandDialog.resx">
       <DependentUpon>BrandDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\CancelSaleDialog.resx">
+      <DependentUpon>CancelSaleDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\CategoryDialog.resx">
       <DependentUpon>CategoryDialog.cs</DependentUpon>

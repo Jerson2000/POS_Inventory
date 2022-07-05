@@ -19,7 +19,7 @@ namespace POS_Inventory.Dialogs
         SqlConnection conn;
         SqlCommand cmd;
         SqlDataReader dr;
-        GetString dbcon = new GetString();      
+        GetString dbcon = new GetString();
         public DailySalesDialog()
         {
             InitializeComponent();
@@ -29,6 +29,10 @@ namespace POS_Inventory.Dialogs
             dateEnd.Value = DateTime.Now;
             LoadData();
             LoadCashier();
+            if (Cashier._cashier != String.Empty)
+            {
+                cbCashier.Text = Cashier._cashier;
+            }
         }
         #region Drag Form 
         // Drag Form 
@@ -74,7 +78,15 @@ namespace POS_Inventory.Dialogs
                 double _total = 0;
                 dataGridView1.Rows.Clear();
                 conn.Open();
-                cmd = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + dateEnd.Value.ToString("yyyy-MM-dd") + "'  and cashier like '" + cbCashier.Text + "';", conn); //
+                if(cbCashier.Text == "All Cashier")
+                {
+                    cmd = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + dateEnd.Value.ToString("yyyy-MM-dd") + "';", conn); //
+                }
+                else
+                {
+                    cmd = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + dateEnd.Value.ToString("yyyy-MM-dd") + "'  and cashier like '" + cbCashier.Text + "';", conn); //
+                }
+                
                 dr = cmd.ExecuteReader();
                 int i = 1;
                 while (dr.Read())
@@ -120,10 +132,12 @@ namespace POS_Inventory.Dialogs
                 conn.Open();
                 cmd = new SqlCommand("select * from tbUser where role ='Cashier'",conn);
                 dr = cmd.ExecuteReader();
+                cbCashier.Items.Add("All Cashier");
                 while (dr.Read())
                 {
                     cbCashier.Items.Add(dr["name"].ToString());
                 }
+                dr.Close();
                 conn.Close();
             }
             catch(Exception ex)
@@ -134,8 +148,29 @@ namespace POS_Inventory.Dialogs
         }
 
         private void cbCashier_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {         
+            
             LoadData();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dataGridView1.Columns[e.ColumnIndex].Name;
+            if(colName == "colCancel")
+            {
+                CancelSaleDialog f = new CancelSaleDialog();
+                f.txtID.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                f.txtTransno.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                f.txtPCode.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                f.txtPDesc.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                f.txtPrice.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                f.txtQty.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                f.txtDisc.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+                f.txtTotal.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
+                f.txtCancelBy.Text = Cashier._cashier;
+                f.ShowDialog();
+            }
+
         }
     }
 }

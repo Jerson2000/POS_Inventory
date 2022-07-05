@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using POS_Inventory.Classes;
+using POS_Inventory.Dialogs;
 namespace POS_Inventory
 {
     public partial class Admin : Form
@@ -221,6 +222,12 @@ namespace POS_Inventory
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSalesHistory_Click(object sender, EventArgs e)
+        {
+            DailySalesDialog f = new DailySalesDialog();
+            f.Show();
         }
     }
 

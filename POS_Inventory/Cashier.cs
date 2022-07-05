@@ -20,6 +20,7 @@ namespace POS_Inventory
         SqlDataReader dr;
         GetString dbcon = new GetString();
         public static string _transNo ="";
+        public static string _cashier = "";
         string _id = "";
         string _price;
         string _desc;
@@ -33,6 +34,7 @@ namespace POS_Inventory
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             lbDate.Text = DateTime.Now.ToLongDateString();
             LoadTransaction();
+            _cashier = f._cashier;
         }
 
         #region Drag Form 
@@ -72,7 +74,35 @@ namespace POS_Inventory
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (dataGridView1.Rows.Count > 0)
+            {
+                MessageBox.Show("Unable to logout, Please cancel the transaction!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if(MessageBox.Show("Do you want to cancel the Transaction ?", "Question?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        conn.Open();
+                        cmd = new SqlCommand("delete from tbCart where transno = '" + lbTransNo.Text + "'", conn);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        MessageBox.Show("The transaction has been successfully cancelled!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnNewTransac.Enabled = true;
+                        lbTransNo.Text = "000000000000000000000";
+                        LoadTransaction();
+                    }
+                    catch(Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message);
+                    }
+                                 
+                }
+            }
+            else
+            {
+                this.Close();
+            }
+            
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
@@ -316,7 +346,8 @@ namespace POS_Inventory
 
         private void Cashier_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Logging out? click YES to confirm!", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            
+            if (MessageBox.Show("Logging out? click Yes to confirm!", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 Login f = new Login();
                 f.Show();

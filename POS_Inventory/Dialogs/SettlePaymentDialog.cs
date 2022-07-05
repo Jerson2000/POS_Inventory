@@ -147,7 +147,7 @@ namespace POS_Inventory.Dialogs
                     for (int i = 0;i < frm.dataGridView1.Rows.Count; i++)
                     {
                         conn.Open();
-                        cmd = new SqlCommand("update tbProduct set qty = qty +"+int.Parse(frm.dataGridView1.Rows[i].Cells[5].Value.ToString())+" where pcode = '"+frm.dataGridView1.Rows[i].Cells[2].Value.ToString()+"';", conn);
+                        cmd = new SqlCommand("update tbProduct set qty = qty -"+int.Parse(frm.dataGridView1.Rows[i].Cells[5].Value.ToString())+" where pcode = '"+frm.dataGridView1.Rows[i].Cells[2].Value.ToString()+"';", conn);
                         cmd.ExecuteNonQuery();                      
                         conn.Close();
 

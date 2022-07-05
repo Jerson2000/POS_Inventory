@@ -18,6 +18,7 @@ namespace POS_Inventory
         SqlCommand cmd;
         SqlDataReader dr;
         GetString dbcon = new GetString();
+        public string _cashier="";
 
         public Login()
         {
@@ -71,6 +72,7 @@ namespace POS_Inventory
                     _username = dr["username"].ToString();
                     role = dr["role"].ToString();
                     name = dr["name"].ToString();
+                    _cashier = dr["name"].ToString();
                 }
                 else
                 {

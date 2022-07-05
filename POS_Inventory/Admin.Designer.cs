@@ -49,6 +49,7 @@
             this.lbName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.btnSalesHistory = new FontAwesome.Sharp.IconButton();
             this.dashboard1 = new POS_Inventory.ControlsAdmin.Dashboard();
             this.product1 = new POS_Inventory.ControlsAdmin.Product();
             this.stockIn1 = new POS_Inventory.ControlsAdmin.StockIn();
@@ -150,7 +151,9 @@
             // 
             // panel2
             // 
+            this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.panel2.Controls.Add(this.btnSalesHistory);
             this.panel2.Controls.Add(this.btnStockIn);
             this.panel2.Controls.Add(this.btnLogout);
             this.panel2.Controls.Add(this.btnUSettings);
@@ -224,7 +227,7 @@
             this.btnUSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUSettings.IconSize = 30;
             this.btnUSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUSettings.Location = new System.Drawing.Point(13, 493);
+            this.btnUSettings.Location = new System.Drawing.Point(12, 528);
             this.btnUSettings.Name = "btnUSettings";
             this.btnUSettings.Size = new System.Drawing.Size(232, 29);
             this.btnUSettings.TabIndex = 3;
@@ -245,7 +248,7 @@
             this.btnSysSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSysSettings.IconSize = 30;
             this.btnSysSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSysSettings.Location = new System.Drawing.Point(13, 458);
+            this.btnSysSettings.Location = new System.Drawing.Point(12, 493);
             this.btnSysSettings.Name = "btnSysSettings";
             this.btnSysSettings.Size = new System.Drawing.Size(232, 29);
             this.btnSysSettings.TabIndex = 3;
@@ -289,7 +292,7 @@
             this.btnBrand.Name = "btnBrand";
             this.btnBrand.Size = new System.Drawing.Size(232, 29);
             this.btnBrand.TabIndex = 3;
-            this.btnBrand.Text = "Manage Brand";
+            this.btnBrand.Text = "Brand";
             this.btnBrand.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBrand.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBrand.UseVisualStyleBackColor = true;
@@ -310,7 +313,7 @@
             this.btnCategory.Name = "btnCategory";
             this.btnCategory.Size = new System.Drawing.Size(232, 29);
             this.btnCategory.TabIndex = 3;
-            this.btnCategory.Text = "Manage Category";
+            this.btnCategory.Text = "Category";
             this.btnCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCategory.UseVisualStyleBackColor = true;
@@ -426,6 +429,27 @@
             this.panelContainer.Size = new System.Drawing.Size(994, 641);
             this.panelContainer.TabIndex = 2;
             // 
+            // btnSalesHistory
+            // 
+            this.btnSalesHistory.FlatAppearance.BorderSize = 0;
+            this.btnSalesHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalesHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalesHistory.ForeColor = System.Drawing.Color.White;
+            this.btnSalesHistory.IconChar = FontAwesome.Sharp.IconChar.Database;
+            this.btnSalesHistory.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnSalesHistory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSalesHistory.IconSize = 30;
+            this.btnSalesHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalesHistory.Location = new System.Drawing.Point(13, 458);
+            this.btnSalesHistory.Name = "btnSalesHistory";
+            this.btnSalesHistory.Size = new System.Drawing.Size(232, 29);
+            this.btnSalesHistory.TabIndex = 4;
+            this.btnSalesHistory.Text = "Sales History";
+            this.btnSalesHistory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalesHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalesHistory.UseVisualStyleBackColor = true;
+            this.btnSalesHistory.Click += new System.EventHandler(this.btnSalesHistory_Click);
+            // 
             // dashboard1
             // 
             this.dashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -524,6 +548,7 @@
         private ControlsAdmin.UserSettings userSettings1;
         public System.Windows.Forms.Label lbName;
         public System.Windows.Forms.Label lbRole;
+        private FontAwesome.Sharp.IconButton btnSalesHistory;
     }
 }
 

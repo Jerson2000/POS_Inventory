@@ -947,7 +947,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Date/Time" +Now</Value>
+                      <Value>="Date/Time: " +Now</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>

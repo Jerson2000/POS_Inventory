@@ -28,6 +28,7 @@ namespace POS_Inventory.Dialogs
             dateStart.Value = DateTime.Now;
             dateEnd.Value = DateTime.Now;
             LoadData();
+            LoadCashier();
         }
         #region Drag Form 
         // Drag Form 
@@ -73,7 +74,7 @@ namespace POS_Inventory.Dialogs
                 double _total = 0;
                 dataGridView1.Rows.Clear();
                 conn.Open();
-                cmd = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + dateEnd.Value.ToString("yyyy-MM-dd") + "';", conn);
+                cmd = new SqlCommand("select tbCart.id,tbCart.transno,tbCart.pcode,tbProduct.pdesc,tbCart.price,tbCart.qty,tbCart.disc,tbCart.total from tbCart left join tbProduct on tbCart.pcode = tbProduct.pcode where status like 'Sold%' and tbCart.sdate between '" + dateStart.Value.ToString("yyyy-MM-dd") + "' and '" + dateEnd.Value.ToString("yyyy-MM-dd") + "'  and cashier like '" + cbCashier.Text + "';", conn); //
                 dr = cmd.ExecuteReader();
                 int i = 1;
                 while (dr.Read())
@@ -107,6 +108,34 @@ namespace POS_Inventory.Dialogs
             f.ShowDialog();
         }
 
-        
+        private void cbCashier_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+        public void LoadCashier()
+        {
+            try
+            {
+                cbCashier.Items.Clear();
+                conn.Open();
+                cmd = new SqlCommand("select * from tbUser where role ='Cashier'",conn);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    cbCashier.Items.Add(dr["name"].ToString());
+                }
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cbCashier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }

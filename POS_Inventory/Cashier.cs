@@ -23,9 +23,12 @@ namespace POS_Inventory
         string _id = "";
         string _price;
         string _desc;
-        public Cashier()
+
+        Login frm;
+        public Cashier(Login f)
         {
             InitializeComponent();
+            this.frm = f;
             conn = new SqlConnection(dbcon.DBConn());
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             lbDate.Text = DateTime.Now.ToLongDateString();
@@ -69,7 +72,7 @@ namespace POS_Inventory
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
@@ -309,6 +312,19 @@ namespace POS_Inventory
         {
             DailySalesDialog f = new DailySalesDialog();
             f.ShowDialog();
+        }
+
+        private void Cashier_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Logging out? click YES to confirm!", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                Login f = new Login();
+                f.Show();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 

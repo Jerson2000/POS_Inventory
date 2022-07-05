@@ -64,6 +64,7 @@ namespace POS_Inventory.Dialogs
                     ReportParameter pStore = new ReportParameter("pStore", _store);
                     ReportParameter pAddress = new ReportParameter("pAddress", _address);
                     ReportParameter pTransaction = new ReportParameter("pTransaction","Invoice #:" + f.lbTransNo.Text);
+                    ReportParameter pCashier = new ReportParameter("pCashier",f.lbUser.Text);
 
                     reportViewer1.LocalReport.SetParameters(pVatable);
                     reportViewer1.LocalReport.SetParameters(pVat);
@@ -74,6 +75,7 @@ namespace POS_Inventory.Dialogs
                     reportViewer1.LocalReport.SetParameters(pStore);
                     reportViewer1.LocalReport.SetParameters(pAddress);
                     reportViewer1.LocalReport.SetParameters(pTransaction);
+                    reportViewer1.LocalReport.SetParameters(pCashier);
 
                     reportDataSource = new ReportDataSource("DataSet1", ds.Tables["TableSold"]);
                     reportViewer1.LocalReport.DataSources.Add(reportDataSource);

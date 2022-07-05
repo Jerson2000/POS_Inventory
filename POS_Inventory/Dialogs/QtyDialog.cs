@@ -60,12 +60,13 @@ namespace POS_Inventory.Dialogs
             if ((e.KeyChar == 13) && (numQty.Text != String.Empty))
             {                
                 conn.Open();
-                cmd = new SqlCommand("insert into tbCart(transno,pcode,price,qty,sdate) values(@transno,@pcode,@price,@qty,@sdate)", conn);
+                cmd = new SqlCommand("insert into tbCart(transno,pcode,price,qty,sdate,cashier) values(@transno,@pcode,@price,@qty,@sdate,@cashier)", conn);
                 cmd.Parameters.AddWithValue("@transno", _transno);
                 cmd.Parameters.AddWithValue("@pcode", _pcode);
                 cmd.Parameters.AddWithValue("@price", _price);
                 cmd.Parameters.AddWithValue("@qty", int.Parse(numQty.Text));
                 cmd.Parameters.AddWithValue("@sdate", DateTime.Now);
+                cmd.Parameters.AddWithValue("@cashier", f.lbUser.Text);
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Item Added!",dbcon.GetTitle(),MessageBoxButtons.OK,MessageBoxIcon.Information);

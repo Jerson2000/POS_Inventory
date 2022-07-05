@@ -70,7 +70,7 @@ namespace POS_Inventory
         }
         private void Admin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(MessageBox.Show("Logging Out? click YES to confirm!","Warning",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
+            if(MessageBox.Show("Logging out? click YES to confirm!","Warning",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 Login f = new Login();
                 f.Show();

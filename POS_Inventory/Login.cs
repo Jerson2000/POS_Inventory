@@ -86,7 +86,8 @@ namespace POS_Inventory
                         txtUsername.Clear();
                         txtPassword.Clear();
                         this.Hide();
-                        Cashier f = new Cashier();
+                        Cashier f = new Cashier(this);
+                        f.lbUser.Text = name;
                         f.ShowDialog();
                     }
                     else

@@ -381,6 +381,7 @@
             this.button1.TabIndex = 31;
             this.button1.Text = "Cancel Order";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CancelSaleDialog
             // 
@@ -444,10 +445,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox cbAdd2Invent;
-        private System.Windows.Forms.TextBox txtCancelQty;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtReason;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.TextBox txtID;
@@ -460,5 +458,8 @@
         public System.Windows.Forms.TextBox txtDisc;
         public System.Windows.Forms.TextBox txtVoidBy;
         public System.Windows.Forms.TextBox txtCancelBy;
+        public System.Windows.Forms.TextBox txtReason;
+        public System.Windows.Forms.ComboBox cbAdd2Invent;
+        public System.Windows.Forms.TextBox txtCancelQty;
     }
 }

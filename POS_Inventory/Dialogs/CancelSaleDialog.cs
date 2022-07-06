@@ -19,10 +19,12 @@ namespace POS_Inventory.Dialogs
         SqlCommand cmd;
         SqlDataReader dr;
         GetString dbcon = new GetString();
-        public CancelSaleDialog()
+        DailySalesDialog f;
+        public CancelSaleDialog(DailySalesDialog f)
         {
             InitializeComponent();
             conn = new SqlConnection(dbcon.DBConn());
+            this.f = f;
         }
         #region Drag Form 
         // Drag Form 
@@ -42,6 +44,35 @@ namespace POS_Inventory.Dialogs
         private void iconButton1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbAdd2Invent.Text != String.Empty || txtReason.Text != String.Empty || txtCancelQty.Text != String.Empty)
+                {
+                    if(int.Parse(txtQty.Text) >= int.Parse(txtCancelQty.Text))
+                    {
+                        CancelVoidDialog frm = new CancelVoidDialog(this);
+                        frm.ShowDialog();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("empty");
+                }
+            }
+            
+            catch(Exception ex)
+            {                
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void RefreshList()
+        {
+            f.LoadData();
         }
     }
 }

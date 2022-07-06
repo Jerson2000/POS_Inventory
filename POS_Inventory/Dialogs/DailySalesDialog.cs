@@ -158,7 +158,7 @@ namespace POS_Inventory.Dialogs
             string colName = dataGridView1.Columns[e.ColumnIndex].Name;
             if(colName == "colCancel")
             {
-                CancelSaleDialog f = new CancelSaleDialog();
+                CancelSaleDialog f = new CancelSaleDialog(this);
                 f.txtID.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 f.txtTransno.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 f.txtPCode.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();

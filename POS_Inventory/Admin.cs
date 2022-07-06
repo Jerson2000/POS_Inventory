@@ -98,6 +98,7 @@ namespace POS_Inventory
             product1.Visible = false;
             stockIn1.Visible = false;
             userSettings1.Visible = false;
+            records1.Visible = false;
 
             control.Visible = true;
 
@@ -168,6 +169,20 @@ namespace POS_Inventory
 
             }
 
+            //Records
+            if (records1.Visible == true)
+            {
+                btnRecords.IconColor = System.Drawing.Color.White;
+                btnRecords.BackColor = System.Drawing.Color.FromArgb(52, 74, 96);
+
+            }
+            else if (records1.Visible == false)
+            {
+                btnRecords.IconColor = System.Drawing.Color.FromArgb(52, 152, 219);
+                btnRecords.BackColor = System.Drawing.Color.FromArgb(44, 62, 80);
+
+            }
+
         }
 
         // Toggle Menu Btn
@@ -228,6 +243,12 @@ namespace POS_Inventory
         {
             DailySalesDialog f = new DailySalesDialog();
             f.Show();
+        }
+
+        private void btnRecords_Click(object sender, EventArgs e)
+        {
+            SetActivePanel(records1);
+            records1.LoadTopSelling();
         }
     }
 

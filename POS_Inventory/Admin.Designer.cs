@@ -35,6 +35,7 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.menuBtn = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSalesHistory = new FontAwesome.Sharp.IconButton();
             this.btnStockIn = new FontAwesome.Sharp.IconButton();
             this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.btnUSettings = new FontAwesome.Sharp.IconButton();
@@ -49,13 +50,13 @@
             this.lbName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.btnSalesHistory = new FontAwesome.Sharp.IconButton();
             this.dashboard1 = new POS_Inventory.ControlsAdmin.Dashboard();
             this.product1 = new POS_Inventory.ControlsAdmin.Product();
             this.stockIn1 = new POS_Inventory.ControlsAdmin.StockIn();
             this.category1 = new POS_Inventory.ControlsAdmin.Category();
             this.brand1 = new POS_Inventory.ControlsAdmin.Brand();
             this.userSettings1 = new POS_Inventory.ControlsAdmin.UserSettings();
+            this.records1 = new POS_Inventory.ControlsAdmin.Records();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -173,6 +174,27 @@
             this.panel2.Size = new System.Drawing.Size(259, 641);
             this.panel2.TabIndex = 1;
             // 
+            // btnSalesHistory
+            // 
+            this.btnSalesHistory.FlatAppearance.BorderSize = 0;
+            this.btnSalesHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalesHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalesHistory.ForeColor = System.Drawing.Color.White;
+            this.btnSalesHistory.IconChar = FontAwesome.Sharp.IconChar.Database;
+            this.btnSalesHistory.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnSalesHistory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSalesHistory.IconSize = 30;
+            this.btnSalesHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalesHistory.Location = new System.Drawing.Point(13, 458);
+            this.btnSalesHistory.Name = "btnSalesHistory";
+            this.btnSalesHistory.Size = new System.Drawing.Size(232, 29);
+            this.btnSalesHistory.TabIndex = 4;
+            this.btnSalesHistory.Text = "Sales History";
+            this.btnSalesHistory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalesHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalesHistory.UseVisualStyleBackColor = true;
+            this.btnSalesHistory.Click += new System.EventHandler(this.btnSalesHistory_Click);
+            // 
             // btnStockIn
             // 
             this.btnStockIn.FlatAppearance.BorderSize = 0;
@@ -276,6 +298,7 @@
             this.btnRecords.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRecords.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRecords.UseVisualStyleBackColor = true;
+            this.btnRecords.Click += new System.EventHandler(this.btnRecords_Click);
             // 
             // btnBrand
             // 
@@ -422,33 +445,13 @@
             this.panelContainer.Controls.Add(this.stockIn1);
             this.panelContainer.Controls.Add(this.category1);
             this.panelContainer.Controls.Add(this.brand1);
+            this.panelContainer.Controls.Add(this.records1);
             this.panelContainer.Controls.Add(this.userSettings1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(259, 46);
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(994, 641);
             this.panelContainer.TabIndex = 2;
-            // 
-            // btnSalesHistory
-            // 
-            this.btnSalesHistory.FlatAppearance.BorderSize = 0;
-            this.btnSalesHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalesHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalesHistory.ForeColor = System.Drawing.Color.White;
-            this.btnSalesHistory.IconChar = FontAwesome.Sharp.IconChar.Database;
-            this.btnSalesHistory.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnSalesHistory.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSalesHistory.IconSize = 30;
-            this.btnSalesHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalesHistory.Location = new System.Drawing.Point(13, 458);
-            this.btnSalesHistory.Name = "btnSalesHistory";
-            this.btnSalesHistory.Size = new System.Drawing.Size(232, 29);
-            this.btnSalesHistory.TabIndex = 4;
-            this.btnSalesHistory.Text = "Sales History";
-            this.btnSalesHistory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalesHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalesHistory.UseVisualStyleBackColor = true;
-            this.btnSalesHistory.Click += new System.EventHandler(this.btnSalesHistory_Click);
             // 
             // dashboard1
             // 
@@ -498,6 +501,14 @@
             this.userSettings1.Name = "userSettings1";
             this.userSettings1.Size = new System.Drawing.Size(994, 641);
             this.userSettings1.TabIndex = 5;
+            // 
+            // records1
+            // 
+            this.records1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.records1.Location = new System.Drawing.Point(0, 0);
+            this.records1.Name = "records1";
+            this.records1.Size = new System.Drawing.Size(994, 641);
+            this.records1.TabIndex = 6;
             // 
             // Admin
             // 
@@ -549,6 +560,7 @@
         public System.Windows.Forms.Label lbName;
         public System.Windows.Forms.Label lbRole;
         private FontAwesome.Sharp.IconButton btnSalesHistory;
+        private ControlsAdmin.Records records1;
     }
 }
 

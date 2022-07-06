@@ -55,7 +55,7 @@ namespace POS_Inventory.Dialogs
             {
                 string userName;
                 conn.Open();
-                cmd = new SqlCommand("select * from tbUser where username = @username and password = @password", conn);
+                cmd = new SqlCommand("select * from tbUser where username = @username and password = @password and role like 'System Administrator%'", conn);
                 cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@password", txtPassword.Text);
                 dr = cmd.ExecuteReader();
@@ -80,6 +80,10 @@ namespace POS_Inventory.Dialogs
                     frm.Dispose();
 
                 }
+                else
+                {
+                    MessageBox.Show("Wrong Credential!", "Cancel Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 dr.Close();
                
             }
@@ -94,7 +98,7 @@ namespace POS_Inventory.Dialogs
             try
             {
                 conn.Open();
-                cmd = new SqlCommand("insert into tbCancelOrder (transno,pcode,price,qty,sdate,voidby,cancelby,reason) values (@transno,@pcode,@price,@qty,@sdate,@voidby,@cancelby,@reason)", conn);
+                cmd = new SqlCommand("insert into tbCancelOrder (transno,pcode,price,qty,sdate,voidby,cancelby,reason,action) values (@transno,@pcode,@price,@qty,@sdate,@voidby,@cancelby,@reason,@action)", conn);
                 cmd.Parameters.AddWithValue("@transno", frm.txtTransno.Text);
                 cmd.Parameters.AddWithValue("@pcode", frm.txtPCode.Text);
                 cmd.Parameters.AddWithValue("@price", Double.Parse(frm.txtPrice.Text));
@@ -103,6 +107,7 @@ namespace POS_Inventory.Dialogs
                 cmd.Parameters.AddWithValue("@voidby",_userName);
                 cmd.Parameters.AddWithValue("@cancelby", frm.txtCancelBy.Text);
                 cmd.Parameters.AddWithValue("@reason", frm.txtReason.Text);
+                cmd.Parameters.AddWithValue("@action", frm.txtReason.Text);
                 cmd.ExecuteNonQuery();
                 conn.Close();                
             }

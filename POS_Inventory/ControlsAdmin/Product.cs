@@ -30,7 +30,7 @@ namespace POS_Inventory.ControlsAdmin
             ProductDialog f = new ProductDialog(this);
             f.btnSave.Enabled = true;
             f.btnUpdate.Enabled = false;
-            f.txtPCode.Enabled = true;
+            f.txtPCode.Enabled = true;            
             f.ShowDialog();
         }
         public void LoadData(string input)
@@ -41,13 +41,13 @@ namespace POS_Inventory.ControlsAdmin
              */
             dataGridView1.Rows.Clear();
             conn.Open();
-            cmd = new SqlCommand("select tbProduct.pcode,tbProduct.pdesc,tbBrand.brand,tbCategory.category,tbProduct.price,tbProduct.qty from tbProduct " +
+            cmd = new SqlCommand("select tbProduct.pcode,tbProduct.pdesc,tbBrand.brand,tbCategory.category,tbProduct.price,tbProduct.reorder from tbProduct " +
                 "left join tbBrand on tbProduct.brand_id = tbBrand.brand_id left join tbCategory on tbProduct.cat_id = tbCategory.cat_id where (pdesc like '%"+input+ "%' or pcode like '%" + input + "%' or brand like '%" + input + "%' or category like '%" + input + "%')", conn);
             dr = cmd.ExecuteReader();
             int i = 1; // Number of items/Rows
             while (dr.Read())
             {                
-                dataGridView1.Rows.Add(i, dr["pcode"].ToString(), dr["pdesc"].ToString(), dr["brand"].ToString(),dr["category"].ToString(),dr["price"].ToString(),dr["qty"].ToString());
+                dataGridView1.Rows.Add(i, dr["pcode"].ToString(), dr["pdesc"].ToString(), dr["brand"].ToString(),dr["category"].ToString(),dr["price"].ToString(),dr["reorder"].ToString());
                 i++;
             }
 
@@ -68,7 +68,7 @@ namespace POS_Inventory.ControlsAdmin
             {
                 ProductDialog f = new ProductDialog(this);
                 conn.Open();
-                cmd = new SqlCommand("select tbProduct.pcode,tbProduct.pdesc,tbBrand.brand,tbCategory.category,tbProduct.price from tbProduct " +
+                cmd = new SqlCommand("select tbProduct.pcode,tbProduct.pdesc,tbBrand.brand,tbCategory.category,tbProduct.price,tbProduct.reorder from tbProduct " +
                     "left join tbBrand on tbProduct.brand_id = tbBrand.brand_id left join tbCategory on tbProduct.cat_id = tbCategory.cat_id where pcode = '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "';", conn);
                 dr = cmd.ExecuteReader();
                 dr.Read();
@@ -79,7 +79,7 @@ namespace POS_Inventory.ControlsAdmin
                     f.cbPBrand.Text = dr["brand"].ToString();
                     f.cbPCat.Text = dr["category"].ToString();
                     f.numPrice.Value = Convert.ToDecimal(dr["price"].ToString());
-                    
+                    f.txtROrder.Text = dr["reorder"].ToString();                    
                 }
                 dr.Close();
                 conn.Close();

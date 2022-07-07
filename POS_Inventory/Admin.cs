@@ -249,6 +249,8 @@ namespace POS_Inventory
         {
             SetActivePanel(records1);
             records1.LoadTopSelling();
+            records1.LoadSoldItems();
+            records1.LoadCriticalStocks();
         }
     }
 

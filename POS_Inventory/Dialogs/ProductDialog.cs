@@ -118,12 +118,13 @@ namespace POS_Inventory.Dialogs
 
 
                     conn.Open();
-                    cmd = new SqlCommand("insert into tbProduct (pcode,pdesc,brand_id,cat_id,price,date_added) values(@pcode,@pdesc,@brand_id,@cat_id,@price,CURRENT_TIMESTAMP);", conn);
+                    cmd = new SqlCommand("insert into tbProduct (pcode,pdesc,brand_id,cat_id,price,date_added,reorder) values(@pcode,@pdesc,@brand_id,@cat_id,@price,CURRENT_TIMESTAMP,@reoder);", conn);
                     cmd.Parameters.AddWithValue("@pcode", txtPCode.Text);
                     cmd.Parameters.AddWithValue("@pdesc", txtPDes.Text);
                     cmd.Parameters.AddWithValue("@brand_id", bid);
                     cmd.Parameters.AddWithValue("@cat_id", cid);
-                    cmd.Parameters.AddWithValue("@price", numPrice.Value);                    
+                    cmd.Parameters.AddWithValue("@price", numPrice.Value);
+                    cmd.Parameters.AddWithValue("@reorder", int.Parse(txtROrder.Text));
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Product Added!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -188,17 +189,20 @@ namespace POS_Inventory.Dialogs
 
 
                     conn.Open();
-                    cmd = new SqlCommand("update tbProduct set pdesc = @pdesc,brand_id = @brand_id, cat_id=@cat_id,price=@price where  pcode = @pcode", conn);                    
+                    cmd = new SqlCommand("update tbProduct set pdesc = @pdesc,brand_id = @brand_id, cat_id=@cat_id,price=@price ,reorder=@reorder where  pcode = @pcode", conn);                    
                     cmd.Parameters.AddWithValue("@pdesc", txtPDes.Text);
                     cmd.Parameters.AddWithValue("@brand_id", bid);
                     cmd.Parameters.AddWithValue("@cat_id", cid);
-                    cmd.Parameters.AddWithValue("@price", numPrice.Value);               
+                    cmd.Parameters.AddWithValue("@price", numPrice.Value);
+                    cmd.Parameters.AddWithValue("@reorder", int.Parse(txtROrder.Text));
                     cmd.Parameters.AddWithValue("@pcode", txtPCode.Text);
+                    
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Product Updated!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Clear();
                     f.LoadData("");
+                    this.Dispose();
                 }
             }
             catch (Exception ex)

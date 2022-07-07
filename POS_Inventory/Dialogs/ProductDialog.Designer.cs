@@ -43,6 +43,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnUpdate = new FontAwesome.Sharp.IconButton();
             this.btnSave = new FontAwesome.Sharp.IconButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtROrder = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPrice)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +103,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(76, 82);
+            this.label1.Location = new System.Drawing.Point(60, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 14);
             this.label1.TabIndex = 6;
@@ -111,7 +113,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(84, 105);
+            this.label3.Location = new System.Drawing.Point(60, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 14);
             this.label3.TabIndex = 8;
@@ -129,7 +131,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(132, 136);
+            this.label4.Location = new System.Drawing.Point(60, 135);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 14);
             this.label4.TabIndex = 10;
@@ -149,7 +151,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(108, 166);
+            this.label5.Location = new System.Drawing.Point(60, 165);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 14);
             this.label5.TabIndex = 10;
@@ -193,7 +195,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(135, 196);
+            this.label6.Location = new System.Drawing.Point(60, 191);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 14);
             this.label6.TabIndex = 10;
@@ -233,11 +235,31 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(60, 219);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(119, 14);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Re-Order Level";
+            // 
+            // txtROrder
+            // 
+            this.txtROrder.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtROrder.Location = new System.Drawing.Point(196, 216);
+            this.txtROrder.Name = "txtROrder";
+            this.txtROrder.Size = new System.Drawing.Size(363, 21);
+            this.txtROrder.TabIndex = 15;
+            // 
             // ProductDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 303);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtROrder);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.numPrice);
@@ -280,5 +302,7 @@
         public System.Windows.Forms.ComboBox cbPBrand;
         public System.Windows.Forms.ComboBox cbPCat;
         public System.Windows.Forms.NumericUpDown numPrice;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox txtROrder;
     }
 }

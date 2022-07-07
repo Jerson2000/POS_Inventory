@@ -23,6 +23,7 @@ namespace POS_Inventory.Dialogs
         private string _transno;
         private double _price;
         private string _pcode;
+        private int _qty;
         Cashier f;
         public QtyDialog(Cashier f)
         {
@@ -48,17 +49,23 @@ namespace POS_Inventory.Dialogs
         {
             this.Close();
         }
-        public void GetDetails(string transno,string pcode,string price)
+        public void GetDetails(string transno,string pcode,string price,string qty)
         {
             this._transno = transno;
             this._pcode = pcode;
             this._price = double.Parse(price);
+            this._qty = int.Parse(qty);
         }       
 
         private void numQty_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar == 13) && (numQty.Text != String.Empty))
-            {                
+            {   
+                if(_qty < int.Parse(numQty.Text))
+                {
+                    MessageBox.Show("Unable to proceed. Remaining qty on hand is " + _qty, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 conn.Open();
                 cmd = new SqlCommand("insert into tbCart(transno,pcode,price,qty,sdate,cashier) values(@transno,@pcode,@price,@qty,@sdate,@cashier)", conn);
                 cmd.Parameters.AddWithValue("@transno", _transno);

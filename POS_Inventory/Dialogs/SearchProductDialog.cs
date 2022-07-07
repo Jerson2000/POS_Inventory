@@ -86,7 +86,7 @@ namespace POS_Inventory.Dialogs
                     else
                     {
                         QtyDialog f = new QtyDialog(tr);
-                        f.GetDetails(Cashier._transNo, dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString());
+                        f.GetDetails(Cashier._transNo, dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString(), dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString());
                         f.ShowDialog();
                     }
                     conn.Close();

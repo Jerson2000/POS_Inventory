@@ -185,6 +185,12 @@
     <Compile Include="Dialogs\DiscountDialog.Designer.cs">
       <DependentUpon>DiscountDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\InventoryListPrintReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\InventoryListPrintReport.Designer.cs">
+      <DependentUpon>InventoryListPrintReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\PrintDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     <EmbeddedResource Include="Dialogs\DiscountDialog.resx">
       <DependentUpon>DiscountDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\InventoryListPrintReport.resx">
+      <DependentUpon>InventoryListPrintReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\PrintDialog.resx">
       <DependentUpon>PrintDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,6 +313,7 @@
     <EmbeddedResource Include="Dialogs\StockProducts.resx">
       <DependentUpon>StockProducts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryListReport.rdlc" />
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

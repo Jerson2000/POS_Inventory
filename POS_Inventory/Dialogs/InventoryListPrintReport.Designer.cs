@@ -1,6 +1,6 @@
 ﻿namespace POS_Inventory.Dialogs
 {
-    partial class QtyDialog
+    partial class InventoryListPrintReport
     {
         /// <summary>
         /// Required designer variable.
@@ -29,25 +29,44 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.numQty = new System.Windows.Forms.NumericUpDown();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numQty)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(167)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.iconButton3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.iconButton1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(348, 40);
-            this.panel1.TabIndex = 1;
+            this.panel1.Size = new System.Drawing.Size(889, 40);
+            this.panel1.TabIndex = 14;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton3.FlatAppearance.BorderSize = 0;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.iconButton3.IconColor = System.Drawing.Color.Black;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            this.iconButton3.IconSize = 23;
+            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.iconButton3.Location = new System.Drawing.Point(801, 3);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Size = new System.Drawing.Size(39, 32);
+            this.iconButton3.TabIndex = 28;
+            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton3.UseVisualStyleBackColor = true;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
             // 
             // label1
             // 
@@ -56,9 +75,9 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 20);
+            this.label1.Size = new System.Drawing.Size(99, 20);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Quantity";
+            this.label1.Text = "Print Preview";
             // 
             // iconButton1
             // 
@@ -72,7 +91,7 @@
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.iconButton1.IconSize = 23;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.iconButton1.Location = new System.Drawing.Point(305, 3);
+            this.iconButton1.Location = new System.Drawing.Point(846, 3);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(39, 32);
             this.iconButton1.TabIndex = 3;
@@ -80,54 +99,40 @@
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // numQty
+            // reportViewer1
             // 
-            this.numQty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQty.Location = new System.Drawing.Point(0, 40);
-            this.numQty.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.numQty.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numQty.Name = "numQty";
-            this.numQty.Size = new System.Drawing.Size(348, 68);
-            this.numQty.TabIndex = 2;
-            this.numQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numQty.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numQty_KeyPress);
+            this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POS_Inventory.InventoryListReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(1, 57);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(886, 457);
+            this.reportViewer1.TabIndex = 15;
             // 
-            // QtyDialog
+            // InventoryListPrintReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 111);
-            this.Controls.Add(this.numQty);
+            this.ClientSize = new System.Drawing.Size(889, 515);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.reportViewer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "QtyDialog";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ProductQtyDialog";
+            this.Name = "InventoryListPrintReport";
+            this.Text = "InventoryListPrintReport";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numQty)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton iconButton3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numQty;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

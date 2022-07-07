@@ -251,6 +251,7 @@ namespace POS_Inventory
             records1.LoadTopSelling();
             records1.LoadSoldItems();
             records1.LoadCriticalStocks();
+            records1.LoadInventory();
         }
     }
 

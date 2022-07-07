@@ -25,11 +25,21 @@ namespace POS_Inventory.ControlsAdmin
             conn = new SqlConnection(dbcon.DBConn());
             LoadTopSelling();
             LoadCriticalStocks();
+            LoadInventory();
+
+
+
+            dtSoldItemStart.Value = DateTime.Now;
+            dtSoldItemEnd.Value = DateTime.Now;
+
+            dateStart.Value = DateTime.Now;
+            dateEnd.Value = DateTime.Now;
         }
 
         #region Top Selling
         public void LoadTopSelling()
         {
+            
             try
             {
                 conn.Open();
@@ -62,6 +72,7 @@ namespace POS_Inventory.ControlsAdmin
 
         public void LoadSoldItems()
         {
+            
             try
             {
                 conn.Open();
@@ -116,6 +127,37 @@ namespace POS_Inventory.ControlsAdmin
             }
         }
         #endregion
+        #region Inventory List
+        public void LoadInventory()
+        {
+            try
+            {
+                dgvInventory.Rows.Clear();
+                conn.Open();
+                cmd = new SqlCommand("select tbProduct.pcode,tbProduct.pdesc,tbBrand.brand,tbCategory.category,tbProduct.price,tbProduct.reorder,tbProduct.qty from tbProduct left join tbBrand on tbProduct.brand_id = tbBrand.brand_id left join tbCategory on tbProduct.cat_id = tbCategory.cat_id;", conn);
+                dr = cmd.ExecuteReader();
+                int i = 1;
+                while (dr.Read())
+                {
+                    dgvInventory.Rows.Add(i, dr["pcode"].ToString(), dr["pdesc"].ToString(), dr["brand"].ToString(), dr["category"].ToString(), dr["price"].ToString(), dr["reorder"].ToString(), dr["qty"].ToString());
+                    i++;
+                }
+                dr.Close();
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            InventoryListPrintReport invt = new InventoryListPrintReport();
+            invt.ShowDialog();
+        }
+        #endregion
+
 
     }
 }

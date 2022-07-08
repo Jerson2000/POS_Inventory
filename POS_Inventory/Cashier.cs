@@ -337,6 +337,10 @@ namespace POS_Inventory
             }
            
         }
+        private void btnCancelSales_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnBrand_Click(object sender, EventArgs e)
         {
@@ -355,6 +359,36 @@ namespace POS_Inventory
             else
             {
                 e.Cancel = true;
+            }
+        }
+      
+        // Hotkeys, will implement later 
+        
+        private void Cashier_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            switch (e.KeyCode)
+            {
+                case Keys.F1:
+                    btnNewTransac_Click(sender, e);
+                    break;
+                case Keys.F2:
+                    btnSearchProduct_Click(sender, e);
+                    break;
+                case Keys.F3:
+                    btnDiscount_Click(sender, e);
+                    break;
+                case Keys.F4:
+                    btnSettlePayment_Click(sender, e);
+                    break;
+                case Keys.F5:
+                    btnCancelSales_Click(sender, e);
+                    break;
+                case Keys.F6:
+                    btnBrand_Click(sender, e);
+                    break;
+               
+
             }
         }
     }

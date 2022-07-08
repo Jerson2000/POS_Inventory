@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cashier));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.btnSysSettings = new FontAwesome.Sharp.IconButton();
             this.btnRecords = new FontAwesome.Sharp.IconButton();
             this.btnBrand = new FontAwesome.Sharp.IconButton();
-            this.btnCategory = new FontAwesome.Sharp.IconButton();
+            this.btnCancelSales = new FontAwesome.Sharp.IconButton();
             this.btnDiscount = new FontAwesome.Sharp.IconButton();
             this.btnSearchProduct = new FontAwesome.Sharp.IconButton();
             this.btnNewTransac = new FontAwesome.Sharp.IconButton();
@@ -261,7 +261,7 @@
             this.panel2.Controls.Add(this.btnSysSettings);
             this.panel2.Controls.Add(this.btnRecords);
             this.panel2.Controls.Add(this.btnBrand);
-            this.panel2.Controls.Add(this.btnCategory);
+            this.panel2.Controls.Add(this.btnCancelSales);
             this.panel2.Controls.Add(this.btnDiscount);
             this.panel2.Controls.Add(this.btnSearchProduct);
             this.panel2.Controls.Add(this.btnNewTransac);
@@ -379,26 +379,27 @@
             this.btnBrand.UseVisualStyleBackColor = true;
             this.btnBrand.Click += new System.EventHandler(this.btnBrand_Click);
             // 
-            // btnCategory
+            // btnCancelSales
             // 
-            this.btnCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCategory.FlatAppearance.BorderSize = 0;
-            this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategory.ForeColor = System.Drawing.Color.White;
-            this.btnCategory.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnCategory.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(167)))));
-            this.btnCategory.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnCategory.IconSize = 30;
-            this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategory.Location = new System.Drawing.Point(26, 175);
-            this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(241, 29);
-            this.btnCategory.TabIndex = 3;
-            this.btnCategory.Text = "[ F5 ] Cancel Sales";
-            this.btnCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCategory.UseVisualStyleBackColor = true;
+            this.btnCancelSales.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCancelSales.FlatAppearance.BorderSize = 0;
+            this.btnCancelSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelSales.ForeColor = System.Drawing.Color.White;
+            this.btnCancelSales.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnCancelSales.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(167)))));
+            this.btnCancelSales.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnCancelSales.IconSize = 30;
+            this.btnCancelSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelSales.Location = new System.Drawing.Point(26, 175);
+            this.btnCancelSales.Name = "btnCancelSales";
+            this.btnCancelSales.Size = new System.Drawing.Size(241, 29);
+            this.btnCancelSales.TabIndex = 3;
+            this.btnCancelSales.Text = "[ F5 ] Cancel Sales";
+            this.btnCancelSales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelSales.UseVisualStyleBackColor = true;
+            this.btnCancelSales.Click += new System.EventHandler(this.btnCancelSales_Click);
             // 
             // btnDiscount
             // 
@@ -616,14 +617,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -638,14 +639,14 @@
             this.colMinusQty,
             this.colAddQty,
             this.colDelete});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(3, 75);
             this.dataGridView1.Name = "dataGridView1";
@@ -799,10 +800,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "Cashier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cashier";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Cashier_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cashier_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -828,7 +831,7 @@
         private FontAwesome.Sharp.IconButton btnSysSettings;
         private FontAwesome.Sharp.IconButton btnRecords;
         private FontAwesome.Sharp.IconButton btnBrand;
-        private FontAwesome.Sharp.IconButton btnCategory;
+        private FontAwesome.Sharp.IconButton btnCancelSales;
         private FontAwesome.Sharp.IconButton btnDiscount;
         private FontAwesome.Sharp.IconButton btnSearchProduct;
         private FontAwesome.Sharp.IconButton iconButton1;

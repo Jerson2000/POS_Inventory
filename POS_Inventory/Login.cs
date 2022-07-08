@@ -113,5 +113,15 @@ namespace POS_Inventory
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:                   
+                    iconButton2_Click(sender, e);
+                    break;
+            }
+        }
     }
 }

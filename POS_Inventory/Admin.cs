@@ -99,7 +99,7 @@ namespace POS_Inventory
             stockIn1.Visible = false;
             userSettings1.Visible = false;
             records1.Visible = false;
-
+            
             control.Visible = true;
 
 
@@ -252,6 +252,7 @@ namespace POS_Inventory
             records1.LoadSoldItems();
             records1.LoadCriticalStocks();
             records1.LoadInventory();
+            records1.LoadCancelOrder();
         }
     }
 

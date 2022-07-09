@@ -102,12 +102,12 @@ namespace POS_Inventory.Dialogs
                 cmd.Parameters.AddWithValue("@transno", frm.txtTransno.Text);
                 cmd.Parameters.AddWithValue("@pcode", frm.txtPCode.Text);
                 cmd.Parameters.AddWithValue("@price", Double.Parse(frm.txtPrice.Text));
-                cmd.Parameters.AddWithValue("@qty", frm.txtQty.Text);
+                cmd.Parameters.AddWithValue("@qty", frm.txtCancelQty.Text);
                 cmd.Parameters.AddWithValue("@sdate", DateTime.Now);
                 cmd.Parameters.AddWithValue("@voidby",_userName);
                 cmd.Parameters.AddWithValue("@cancelby", frm.txtCancelBy.Text);
                 cmd.Parameters.AddWithValue("@reason", frm.txtReason.Text);
-                cmd.Parameters.AddWithValue("@action", frm.txtReason.Text);
+                cmd.Parameters.AddWithValue("@action", frm.cbAdd2Invent.Text);
                 cmd.ExecuteNonQuery();
                 conn.Close();                
             }

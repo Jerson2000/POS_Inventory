@@ -242,7 +242,7 @@ namespace POS_Inventory
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {            
             string colName = dataGridView1.Columns[e.ColumnIndex].Name;
             if (colName == "colDelete")
             {
@@ -382,10 +382,10 @@ namespace POS_Inventory
                     btnSettlePayment_Click(sender, e);
                     break;
                 case Keys.F5:
-                    btnCancelSales_Click(sender, e);
+                    btnBrand_Click(sender, e);
                     break;
                 case Keys.F6:
-                    btnBrand_Click(sender, e);
+                    
                     break;
                
 

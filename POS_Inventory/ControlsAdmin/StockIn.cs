@@ -56,7 +56,7 @@ namespace POS_Inventory.ControlsAdmin
             
             dataGridView2.Rows.Clear();
             conn.Open();
-            cmd = new SqlCommand("select tbStock.id,tbStock.refno,tbStock.pcode,tbProduct.pdesc,tbStock.qty,tbStock.sdate,tbStock.stock_in_by from tbStock left join tbProduct on tbStock.pcode = tbProduct.pcode where tbStock.sdate between '"+dateStart.Value.ToString("dd-MM-yyyy")+"' and '"+dateEnd.Value.ToString("dd-MM-yyyy") + "' and status like '%Done%';", conn); //sdate between '"+dateStart.Value+"' and '"+dateEnd.Value+"' and
+            cmd = new SqlCommand("select tbStock.id,tbStock.refno,tbStock.pcode,tbProduct.pdesc,tbStock.qty,tbStock.sdate,tbStock.stock_in_by from tbStock left join tbProduct on tbStock.pcode = tbProduct.pcode where tbStock.sdate between '"+dateStart.Value.ToString("yyyy-MM-dd")+"' and '"+dateEnd.Value.ToString("yyy-MM-dd") + "' and status like '%Done%';", conn); //sdate between '"+dateStart.Value+"' and '"+dateEnd.Value+"' and
             dr = cmd.ExecuteReader();
             int i = 1; // Number of items/Rows
             while (dr.Read())
@@ -107,7 +107,7 @@ namespace POS_Inventory.ControlsAdmin
 
                             // Update Stock qty
                             conn.Open();
-                            cmd = new SqlCommand("update tbStock set qty += " + int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()) + ", status='Done' where id = '" + dataGridView1.Rows[i].Cells[7].Value.ToString()+"';", conn);
+                            cmd = new SqlCommand("update tbStock set qty = " + int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()) + ", status='Done' where id = '" + dataGridView1.Rows[i].Cells[7].Value.ToString()+"';", conn);
                             cmd.ExecuteNonQuery();
                             conn.Close();
                         }

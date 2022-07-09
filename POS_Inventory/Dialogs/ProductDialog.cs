@@ -118,7 +118,7 @@ namespace POS_Inventory.Dialogs
 
 
                     conn.Open();
-                    cmd = new SqlCommand("insert into tbProduct (pcode,pdesc,brand_id,cat_id,price,date_added,reorder) values(@pcode,@pdesc,@brand_id,@cat_id,@price,CURRENT_TIMESTAMP,@reoder);", conn);
+                    cmd = new SqlCommand("insert into tbProduct (pcode,pdesc,brand_id,cat_id,price,date_added,reorder) values(@pcode,@pdesc,@brand_id,@cat_id,@price,CURRENT_TIMESTAMP,@reorder);", conn);
                     cmd.Parameters.AddWithValue("@pcode", txtPCode.Text);
                     cmd.Parameters.AddWithValue("@pdesc", txtPDes.Text);
                     cmd.Parameters.AddWithValue("@brand_id", bid);
@@ -149,6 +149,13 @@ namespace POS_Inventory.Dialogs
 
         private void Clear()
         {
+            txtPCode.Clear();
+            txtPDes.Clear();
+            cbPBrand.Text = "";
+            cbPCat.Text = "";
+            numPrice.Value = numPrice.Minimum;
+            txtROrder.Clear();
+
             
         }
 

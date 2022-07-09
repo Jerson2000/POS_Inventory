@@ -49,7 +49,6 @@
             this.btnSysSettings = new FontAwesome.Sharp.IconButton();
             this.btnRecords = new FontAwesome.Sharp.IconButton();
             this.btnBrand = new FontAwesome.Sharp.IconButton();
-            this.btnCancelSales = new FontAwesome.Sharp.IconButton();
             this.btnDiscount = new FontAwesome.Sharp.IconButton();
             this.btnSearchProduct = new FontAwesome.Sharp.IconButton();
             this.btnNewTransac = new FontAwesome.Sharp.IconButton();
@@ -66,6 +65,15 @@
             this.lbVat = new System.Windows.Forms.Label();
             this.lbDiscount = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lbDate = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbTransNo = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,11 +85,6 @@
             this.colMinusQty = new System.Windows.Forms.DataGridViewImageColumn();
             this.colAddQty = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.lbDate = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lbTransNo = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -89,6 +92,8 @@
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -261,7 +266,6 @@
             this.panel2.Controls.Add(this.btnSysSettings);
             this.panel2.Controls.Add(this.btnRecords);
             this.panel2.Controls.Add(this.btnBrand);
-            this.panel2.Controls.Add(this.btnCancelSales);
             this.panel2.Controls.Add(this.btnDiscount);
             this.panel2.Controls.Add(this.btnSearchProduct);
             this.panel2.Controls.Add(this.btnNewTransac);
@@ -369,37 +373,15 @@
             this.btnBrand.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnBrand.IconSize = 30;
             this.btnBrand.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrand.Location = new System.Drawing.Point(26, 210);
+            this.btnBrand.Location = new System.Drawing.Point(26, 175);
             this.btnBrand.Name = "btnBrand";
             this.btnBrand.Size = new System.Drawing.Size(241, 29);
             this.btnBrand.TabIndex = 3;
-            this.btnBrand.Text = "[ F6 ] Daily Sales";
+            this.btnBrand.Text = "[ F5 ] Daily Sales";
             this.btnBrand.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBrand.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBrand.UseVisualStyleBackColor = true;
             this.btnBrand.Click += new System.EventHandler(this.btnBrand_Click);
-            // 
-            // btnCancelSales
-            // 
-            this.btnCancelSales.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelSales.FlatAppearance.BorderSize = 0;
-            this.btnCancelSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelSales.ForeColor = System.Drawing.Color.White;
-            this.btnCancelSales.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnCancelSales.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(167)))));
-            this.btnCancelSales.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnCancelSales.IconSize = 30;
-            this.btnCancelSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelSales.Location = new System.Drawing.Point(26, 175);
-            this.btnCancelSales.Name = "btnCancelSales";
-            this.btnCancelSales.Size = new System.Drawing.Size(241, 29);
-            this.btnCancelSales.TabIndex = 3;
-            this.btnCancelSales.Text = "[ F5 ] Cancel Sales";
-            this.btnCancelSales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelSales.UseVisualStyleBackColor = true;
-            this.btnCancelSales.Click += new System.EventHandler(this.btnCancelSales_Click);
             // 
             // btnDiscount
             // 
@@ -469,6 +451,9 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.pictureBox3);
+            this.panel3.Controls.Add(this.pictureBox2);
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.lbSalesAmount);
@@ -658,6 +643,83 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
+            // lbDate
+            // 
+            this.lbDate.AutoSize = true;
+            this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.Location = new System.Drawing.Point(166, 43);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(176, 17);
+            this.lbDate.TabIndex = 8;
+            this.lbDate.Text = "000000000000000000000";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(27, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Transaction Date";
+            // 
+            // lbTransNo
+            // 
+            this.lbTransNo.AutoSize = true;
+            this.lbTransNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTransNo.Location = new System.Drawing.Point(166, 13);
+            this.lbTransNo.Name = "lbTransNo";
+            this.lbTransNo.Size = new System.Drawing.Size(176, 17);
+            this.lbTransNo.TabIndex = 6;
+            this.lbTransNo.Text = "000000000000000000000";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(27, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Transaction No";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(796, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 17);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Legend:";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(862, 34);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 15;
+            this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Decrease Quantity");
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(899, 34);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 15;
+            this.pictureBox3.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox3, "Increase Quantity");
+            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -744,52 +806,8 @@
             this.colDelete.Image = ((System.Drawing.Image)(resources.GetObject("colDelete.Image")));
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
+            this.colDelete.ToolTipText = "Delete Item";
             this.colDelete.Width = 5;
-            // 
-            // lbDate
-            // 
-            this.lbDate.AutoSize = true;
-            this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(166, 43);
-            this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(176, 17);
-            this.lbDate.TabIndex = 8;
-            this.lbDate.Text = "000000000000000000000";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(27, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Transaction Date";
-            // 
-            // lbTransNo
-            // 
-            this.lbTransNo.AutoSize = true;
-            this.lbTransNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTransNo.Location = new System.Drawing.Point(166, 13);
-            this.lbTransNo.Name = "lbTransNo";
-            this.lbTransNo.Size = new System.Drawing.Size(176, 17);
-            this.lbTransNo.TabIndex = 6;
-            this.lbTransNo.Text = "000000000000000000000";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(27, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Transaction No";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Cashier
             // 
@@ -817,6 +835,8 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -831,7 +851,6 @@
         private FontAwesome.Sharp.IconButton btnSysSettings;
         private FontAwesome.Sharp.IconButton btnRecords;
         private FontAwesome.Sharp.IconButton btnBrand;
-        private FontAwesome.Sharp.IconButton btnCancelSales;
         private FontAwesome.Sharp.IconButton btnDiscount;
         private FontAwesome.Sharp.IconButton btnSearchProduct;
         private FontAwesome.Sharp.IconButton iconButton1;
@@ -855,6 +874,16 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.DataGridView dataGridView1;
+        public FontAwesome.Sharp.IconButton btnNewTransac;
+        public System.Windows.Forms.Label lbVatable;
+        public System.Windows.Forms.Label lbVat;
+        public System.Windows.Forms.Label lbDiscount;
+        public System.Windows.Forms.Label lbSalesAmount;
+        public System.Windows.Forms.Label lbUser;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
@@ -866,11 +895,5 @@
         private System.Windows.Forms.DataGridViewImageColumn colMinusQty;
         private System.Windows.Forms.DataGridViewImageColumn colAddQty;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
-        public FontAwesome.Sharp.IconButton btnNewTransac;
-        public System.Windows.Forms.Label lbVatable;
-        public System.Windows.Forms.Label lbVat;
-        public System.Windows.Forms.Label lbDiscount;
-        public System.Windows.Forms.Label lbSalesAmount;
-        public System.Windows.Forms.Label lbUser;
     }
 }

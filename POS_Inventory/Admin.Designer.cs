@@ -44,7 +44,7 @@
             this.btnBrand = new FontAwesome.Sharp.IconButton();
             this.btnCategory = new FontAwesome.Sharp.IconButton();
             this.btnProduct = new FontAwesome.Sharp.IconButton();
-            this.btnPOS = new FontAwesome.Sharp.IconButton();
+            this.btnVendor = new FontAwesome.Sharp.IconButton();
             this.btnDashboard = new FontAwesome.Sharp.IconButton();
             this.lbRole = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
@@ -55,8 +55,9 @@
             this.stockIn1 = new POS_Inventory.ControlsAdmin.StockIn();
             this.category1 = new POS_Inventory.ControlsAdmin.Category();
             this.brand1 = new POS_Inventory.ControlsAdmin.Brand();
-            this.userSettings1 = new POS_Inventory.ControlsAdmin.UserSettings();
             this.records1 = new POS_Inventory.ControlsAdmin.Records();
+            this.userSettings1 = new POS_Inventory.ControlsAdmin.UserSettings();
+            this.vendor1 = new POS_Inventory.ControlsAdmin.Vendor();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -163,7 +164,7 @@
             this.panel2.Controls.Add(this.btnBrand);
             this.panel2.Controls.Add(this.btnCategory);
             this.panel2.Controls.Add(this.btnProduct);
-            this.panel2.Controls.Add(this.btnPOS);
+            this.panel2.Controls.Add(this.btnVendor);
             this.panel2.Controls.Add(this.btnDashboard);
             this.panel2.Controls.Add(this.lbRole);
             this.panel2.Controls.Add(this.lbName);
@@ -210,7 +211,7 @@
             this.btnStockIn.Name = "btnStockIn";
             this.btnStockIn.Size = new System.Drawing.Size(231, 29);
             this.btnStockIn.TabIndex = 3;
-            this.btnStockIn.Text = "Stock In";
+            this.btnStockIn.Text = "Stock Entry";
             this.btnStockIn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStockIn.UseVisualStyleBackColor = true;
@@ -357,31 +358,32 @@
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(232, 29);
             this.btnProduct.TabIndex = 3;
-            this.btnProduct.Text = "Manage Product";
+            this.btnProduct.Text = "Product";
             this.btnProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProduct.UseVisualStyleBackColor = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
-            // btnPOS
+            // btnVendor
             // 
-            this.btnPOS.FlatAppearance.BorderSize = 0;
-            this.btnPOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPOS.ForeColor = System.Drawing.Color.White;
-            this.btnPOS.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
-            this.btnPOS.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnPOS.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnPOS.IconSize = 30;
-            this.btnPOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPOS.Location = new System.Drawing.Point(13, 248);
-            this.btnPOS.Name = "btnPOS";
-            this.btnPOS.Size = new System.Drawing.Size(232, 29);
-            this.btnPOS.TabIndex = 3;
-            this.btnPOS.Text = "POS";
-            this.btnPOS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPOS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPOS.UseVisualStyleBackColor = true;
+            this.btnVendor.FlatAppearance.BorderSize = 0;
+            this.btnVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVendor.ForeColor = System.Drawing.Color.White;
+            this.btnVendor.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
+            this.btnVendor.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnVendor.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnVendor.IconSize = 30;
+            this.btnVendor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVendor.Location = new System.Drawing.Point(13, 248);
+            this.btnVendor.Name = "btnVendor";
+            this.btnVendor.Size = new System.Drawing.Size(232, 29);
+            this.btnVendor.TabIndex = 3;
+            this.btnVendor.Text = "Vendor";
+            this.btnVendor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVendor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVendor.UseVisualStyleBackColor = true;
+            this.btnVendor.Click += new System.EventHandler(this.btnVendor_Click);
             // 
             // btnDashboard
             // 
@@ -441,6 +443,7 @@
             // 
             this.panelContainer.BackColor = System.Drawing.Color.White;
             this.panelContainer.Controls.Add(this.dashboard1);
+            this.panelContainer.Controls.Add(this.vendor1);
             this.panelContainer.Controls.Add(this.product1);
             this.panelContainer.Controls.Add(this.stockIn1);
             this.panelContainer.Controls.Add(this.category1);
@@ -494,6 +497,14 @@
             this.brand1.Size = new System.Drawing.Size(994, 641);
             this.brand1.TabIndex = 0;
             // 
+            // records1
+            // 
+            this.records1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.records1.Location = new System.Drawing.Point(0, 0);
+            this.records1.Name = "records1";
+            this.records1.Size = new System.Drawing.Size(994, 641);
+            this.records1.TabIndex = 6;
+            // 
             // userSettings1
             // 
             this.userSettings1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -502,13 +513,13 @@
             this.userSettings1.Size = new System.Drawing.Size(994, 641);
             this.userSettings1.TabIndex = 5;
             // 
-            // records1
+            // vendor1
             // 
-            this.records1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.records1.Location = new System.Drawing.Point(0, 0);
-            this.records1.Name = "records1";
-            this.records1.Size = new System.Drawing.Size(994, 641);
-            this.records1.TabIndex = 6;
+            this.vendor1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vendor1.Location = new System.Drawing.Point(0, 0);
+            this.vendor1.Name = "vendor1";
+            this.vendor1.Size = new System.Drawing.Size(994, 641);
+            this.vendor1.TabIndex = 7;
             // 
             // Admin
             // 
@@ -547,7 +558,7 @@
         private FontAwesome.Sharp.IconButton btnBrand;
         private FontAwesome.Sharp.IconButton btnCategory;
         private FontAwesome.Sharp.IconButton btnProduct;
-        private FontAwesome.Sharp.IconButton btnPOS;
+        private FontAwesome.Sharp.IconButton btnVendor;
         private FontAwesome.Sharp.IconButton btnLogout;
         private System.Windows.Forms.Panel panelContainer;
         private ControlsAdmin.Brand brand1;
@@ -561,6 +572,7 @@
         public System.Windows.Forms.Label lbRole;
         private FontAwesome.Sharp.IconButton btnSalesHistory;
         private ControlsAdmin.Records records1;
+        private ControlsAdmin.Vendor vendor1;
     }
 }
 

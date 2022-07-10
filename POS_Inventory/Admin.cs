@@ -99,6 +99,7 @@ namespace POS_Inventory
             stockIn1.Visible = false;
             userSettings1.Visible = false;
             records1.Visible = false;
+            vendor1.Visible = false;
             
             control.Visible = true;
 
@@ -183,6 +184,21 @@ namespace POS_Inventory
 
             }
 
+
+            //Vendor
+            if (vendor1.Visible == true)
+            {
+                btnVendor.IconColor = System.Drawing.Color.White;
+                btnVendor.BackColor = System.Drawing.Color.FromArgb(52, 74, 96);
+
+            }
+            else if (vendor1.Visible == false)
+            {
+                btnVendor.IconColor = System.Drawing.Color.FromArgb(52, 152, 219);
+                btnVendor.BackColor = System.Drawing.Color.FromArgb(44, 62, 80);
+
+            }
+
         }
 
         // Toggle Menu Btn
@@ -253,6 +269,12 @@ namespace POS_Inventory
             records1.LoadCriticalStocks();
             records1.LoadInventory();
             records1.LoadCancelOrder();
+        }
+
+        private void btnVendor_Click(object sender, EventArgs e)
+        {
+            SetActivePanel(vendor1);
+            vendor1.LoadVendor();
         }
     }
 

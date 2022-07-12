@@ -124,6 +124,12 @@
     <Compile Include="ControlsAdmin\Records.Designer.cs">
       <DependentUpon>Records.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlsAdmin\StockAdjustment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlsAdmin\StockAdjustment.Designer.cs">
+      <DependentUpon>StockAdjustment.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlsAdmin\StockIn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlsAdmin\Records.resx">
       <DependentUpon>Records.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsAdmin\StockAdjustment.resx">
+      <DependentUpon>StockAdjustment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlsAdmin\StockIn.resx">
       <DependentUpon>StockIn.cs</DependentUpon>

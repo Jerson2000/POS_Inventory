@@ -45,6 +45,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.lbID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             this.btnUpdate.Text = "Update";
             this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSave
             // 
@@ -101,6 +103,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(685, 36);
             this.panel1.TabIndex = 6;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // iconButton3
             // 
@@ -112,7 +115,7 @@
             this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
             this.iconButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            this.iconButton3.IconSize = 35;
+            this.iconButton3.IconSize = 30;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.iconButton3.Location = new System.Drawing.Point(643, 1);
             this.iconButton3.Name = "iconButton3";
@@ -120,12 +123,13 @@
             this.iconButton3.TabIndex = 4;
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton3.UseVisualStyleBackColor = true;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Lucida Console", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 17);
+            this.label2.Location = new System.Drawing.Point(3, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 19);
             this.label2.TabIndex = 0;
@@ -229,11 +233,23 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Fax";
             // 
+            // lbID
+            // 
+            this.lbID.AutoSize = true;
+            this.lbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbID.Location = new System.Drawing.Point(52, 57);
+            this.lbID.Name = "lbID";
+            this.lbID.Size = new System.Drawing.Size(22, 18);
+            this.lbID.TabIndex = 18;
+            this.lbID.Text = "ID";
+            this.lbID.Visible = false;
+            // 
             // VendorDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(685, 379);
+            this.Controls.Add(this.lbID);
             this.Controls.Add(this.txtFax);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtEmail);
@@ -279,5 +295,6 @@
         public System.Windows.Forms.TextBox txtTelephone;
         public System.Windows.Forms.TextBox txtEmail;
         public System.Windows.Forms.TextBox txtFax;
+        public System.Windows.Forms.Label lbID;
     }
 }

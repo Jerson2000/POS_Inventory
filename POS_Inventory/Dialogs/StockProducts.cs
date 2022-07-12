@@ -52,6 +52,10 @@ namespace POS_Inventory.Dialogs
                 {
                     MessageBox.Show("Missing Required fields!", dbcon.GetTitle());
                 }
+                else if(f.cbVendor.Text == String.Empty)
+                {
+                    MessageBox.Show("Select Vendor to proceed!", "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 else if (MessageBox.Show("Add this item ?", dbcon.GetTitle(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
@@ -67,11 +71,12 @@ namespace POS_Inventory.Dialogs
                     else
                     {
                         dr.Close();
-                        cmd = new SqlCommand("insert into tbStock (refno,pcode,sdate,stock_in_by) values (@refno,@pcode,@sdate,@stockby)", conn);
+                        cmd = new SqlCommand("insert into tbStock (refno,pcode,sdate,stock_in_by,vendor_id) values (@refno,@pcode,@sdate,@stockby,@vendor_id)", conn);
                         cmd.Parameters.AddWithValue("@refno", f.txtRefno.Text);
                         cmd.Parameters.AddWithValue("@pcode", dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
                         cmd.Parameters.AddWithValue("@sdate", f.dtStockDate.Value);
                         cmd.Parameters.AddWithValue("@stockby", f.txtStockBy.Text);
+                        cmd.Parameters.AddWithValue("@vendor_id", f.lbVendorID.Text);
                         cmd.ExecuteNonQuery();
                         conn.Close();
                         MessageBox.Show("Successfully Added", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);

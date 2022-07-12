@@ -25,6 +25,7 @@ namespace POS_Inventory.ControlsAdmin
             conn = new SqlConnection(dbcon.DBConn());
             LoadData();
             LoadHistory();
+            LoadVendor();
             dateStart.Value = DateTime.Now;
             dateEnd.Value = DateTime.Now;
             
@@ -32,19 +33,20 @@ namespace POS_Inventory.ControlsAdmin
 
         private void label9_Click(object sender, EventArgs e)
         {
-            StockProducts f = new StockProducts(this);
-            f.ShowDialog();
+             StockProducts f = new StockProducts(this);
+              f.ShowDialog();
+           
         }
         public void LoadData()
         {
             dataGridView1.Rows.Clear();
             conn.Open();
-            cmd = new SqlCommand("select tbStock.id,tbStock.refno,tbStock.pcode,tbProduct.pdesc,tbStock.qty,tbStock.sdate,tbStock.stock_in_by from tbStock left join tbProduct on tbStock.pcode = tbProduct.pcode where status = 'Pending';", conn);             
+            cmd = new SqlCommand("select tbStock.id,tbStock.refno,tbStock.pcode,tbProduct.pdesc,tbStock.qty,tbStock.sdate,tbStock.stock_in_by,tbVendor.vendor from tbStock left join tbProduct on tbStock.pcode = tbProduct.pcode left join tbVendor on tbStock.vendor_id = tbVendor.id where status = 'Pending';", conn);             
             dr = cmd.ExecuteReader();
             int i = 1; // Number of items/Rows
             while (dr.Read())
             {
-                dataGridView1.Rows.Add(i, dr["refno"].ToString(), dr["pcode"].ToString(),dr["pdesc"].ToString(), dr["qty"].ToString(), dr["sdate"].ToString(), dr["stock_in_by"].ToString(),dr["id"].ToString());
+                dataGridView1.Rows.Add(i, dr["refno"].ToString(), dr["pcode"].ToString(),dr["pdesc"].ToString(), dr["qty"].ToString(), dr["sdate"].ToString(), dr["stock_in_by"].ToString(),dr["id"].ToString(),dr["vendor"].ToString());
                 i++;
             }
             dr.Close();
@@ -56,16 +58,37 @@ namespace POS_Inventory.ControlsAdmin
             
             dataGridView2.Rows.Clear();
             conn.Open();
-            cmd = new SqlCommand("select tbStock.id,tbStock.refno,tbStock.pcode,tbProduct.pdesc,tbStock.qty,tbStock.sdate,tbStock.stock_in_by from tbStock left join tbProduct on tbStock.pcode = tbProduct.pcode where tbStock.sdate between '"+dateStart.Value.ToString("yyyy-MM-dd")+"' and '"+dateEnd.Value.ToString("yyy-MM-dd") + "' and status like '%Done%';", conn); //sdate between '"+dateStart.Value+"' and '"+dateEnd.Value+"' and
+            cmd = new SqlCommand("select tbStock.id,tbStock.refno,tbStock.pcode,tbProduct.pdesc,tbStock.qty,tbStock.sdate,tbStock.stock_in_by,tbVendor.vendor from tbStock left join tbProduct on tbStock.pcode = tbProduct.pcode left join tbVendor on tbStock.vendor_id = tbVendor.id where tbStock.sdate between '"+dateStart.Value.ToString("yyyy-MM-dd")+"' and '"+dateEnd.Value.ToString("yyy-MM-dd") + "' and status like '%Done%';", conn); //sdate between '"+dateStart.Value+"' and '"+dateEnd.Value+"' and
             dr = cmd.ExecuteReader();
             int i = 1; // Number of items/Rows
             while (dr.Read())
             {
-                dataGridView2.Rows.Add(i, dr["refno"].ToString(), dr["pcode"].ToString(), dr["pdesc"].ToString(), dr["qty"].ToString(),DateTime.Parse(dr["sdate"].ToString()).ToShortDateString(), dr["stock_in_by"].ToString(), dr["id"].ToString());
+                dataGridView2.Rows.Add(i, dr["refno"].ToString(), dr["pcode"].ToString(), dr["pdesc"].ToString(), dr["qty"].ToString(),DateTime.Parse(dr["sdate"].ToString()).ToShortDateString(), dr["stock_in_by"].ToString(), dr["id"].ToString(),dr["vendor"].ToString());
                 i++;
             }
             dr.Close();
             conn.Close();
+        }
+        public void LoadVendor()
+        {
+            try
+            {
+                cbVendor.Items.Clear();
+                conn.Open();
+                cmd = new SqlCommand("select * from tbVendor", conn);
+                dr = cmd.ExecuteReader();               
+                while (dr.Read())
+                {
+                    cbVendor.Items.Add(dr["vendor"].ToString());
+                }
+                dr.Close();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -127,6 +150,44 @@ namespace POS_Inventory.ControlsAdmin
         private void iconButton1_Click(object sender, EventArgs e)
         {
             LoadHistory();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            txtRefno.Clear();
+            Random rand = new Random();
+            txtRefno.Text += rand.Next();
+
+        }
+
+        private void cbVendor_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {               
+                conn.Open();
+                cmd = new SqlCommand("select * from tbVendor where vendor like '"+cbVendor.Text+"%'", conn);
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                if(dr.HasRows)
+                {
+                    
+                    lbVendorID.Text = dr["id"].ToString();
+                    txtContPerson.Text = dr["contact_person"].ToString();
+                    txtAddress.Text = dr["address"].ToString();                    
+                }
+                dr.Close();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cbVendor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

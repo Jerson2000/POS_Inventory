@@ -66,7 +66,7 @@ namespace POS_Inventory.Dialogs
                 if(MessageBox.Show("Add discount to this item?", dbcon.GetTitle(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    cmd = new SqlCommand("update tbCart set disc = '"+Double.Parse(txtDAmount.Text)+"' where id = '" + lbID.Text + "'",conn);
+                    cmd = new SqlCommand("update tbCart set disc_percent = '"+Double.Parse(txtPercent.Text)+"' where id = '" + lbID.Text + "'",conn);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Discount successfully added!", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);

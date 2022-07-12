@@ -51,13 +51,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.dashboard1 = new POS_Inventory.ControlsAdmin.Dashboard();
+            this.vendor1 = new POS_Inventory.ControlsAdmin.Vendor();
             this.product1 = new POS_Inventory.ControlsAdmin.Product();
             this.stockIn1 = new POS_Inventory.ControlsAdmin.StockIn();
             this.category1 = new POS_Inventory.ControlsAdmin.Category();
             this.brand1 = new POS_Inventory.ControlsAdmin.Brand();
             this.records1 = new POS_Inventory.ControlsAdmin.Records();
             this.userSettings1 = new POS_Inventory.ControlsAdmin.UserSettings();
-            this.vendor1 = new POS_Inventory.ControlsAdmin.Vendor();
+            this.btnStockAdjustment = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -155,6 +156,7 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.panel2.Controls.Add(this.btnStockAdjustment);
             this.panel2.Controls.Add(this.btnSalesHistory);
             this.panel2.Controls.Add(this.btnStockIn);
             this.panel2.Controls.Add(this.btnLogout);
@@ -186,7 +188,7 @@
             this.btnSalesHistory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSalesHistory.IconSize = 30;
             this.btnSalesHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalesHistory.Location = new System.Drawing.Point(13, 458);
+            this.btnSalesHistory.Location = new System.Drawing.Point(13, 498);
             this.btnSalesHistory.Name = "btnSalesHistory";
             this.btnSalesHistory.Size = new System.Drawing.Size(232, 29);
             this.btnSalesHistory.TabIndex = 4;
@@ -250,7 +252,7 @@
             this.btnUSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUSettings.IconSize = 30;
             this.btnUSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUSettings.Location = new System.Drawing.Point(12, 528);
+            this.btnUSettings.Location = new System.Drawing.Point(12, 568);
             this.btnUSettings.Name = "btnUSettings";
             this.btnUSettings.Size = new System.Drawing.Size(232, 29);
             this.btnUSettings.TabIndex = 3;
@@ -271,7 +273,7 @@
             this.btnSysSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSysSettings.IconSize = 30;
             this.btnSysSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSysSettings.Location = new System.Drawing.Point(12, 493);
+            this.btnSysSettings.Location = new System.Drawing.Point(12, 533);
             this.btnSysSettings.Name = "btnSysSettings";
             this.btnSysSettings.Size = new System.Drawing.Size(232, 29);
             this.btnSysSettings.TabIndex = 3;
@@ -291,7 +293,7 @@
             this.btnRecords.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRecords.IconSize = 30;
             this.btnRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecords.Location = new System.Drawing.Point(13, 423);
+            this.btnRecords.Location = new System.Drawing.Point(13, 463);
             this.btnRecords.Name = "btnRecords";
             this.btnRecords.Size = new System.Drawing.Size(232, 29);
             this.btnRecords.TabIndex = 3;
@@ -312,7 +314,7 @@
             this.btnBrand.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnBrand.IconSize = 30;
             this.btnBrand.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrand.Location = new System.Drawing.Point(12, 388);
+            this.btnBrand.Location = new System.Drawing.Point(12, 428);
             this.btnBrand.Name = "btnBrand";
             this.btnBrand.Size = new System.Drawing.Size(232, 29);
             this.btnBrand.TabIndex = 3;
@@ -333,7 +335,7 @@
             this.btnCategory.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnCategory.IconSize = 30;
             this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategory.Location = new System.Drawing.Point(12, 353);
+            this.btnCategory.Location = new System.Drawing.Point(12, 393);
             this.btnCategory.Name = "btnCategory";
             this.btnCategory.Size = new System.Drawing.Size(232, 29);
             this.btnCategory.TabIndex = 3;
@@ -464,6 +466,14 @@
             this.dashboard1.Size = new System.Drawing.Size(994, 641);
             this.dashboard1.TabIndex = 1;
             // 
+            // vendor1
+            // 
+            this.vendor1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vendor1.Location = new System.Drawing.Point(0, 0);
+            this.vendor1.Name = "vendor1";
+            this.vendor1.Size = new System.Drawing.Size(994, 641);
+            this.vendor1.TabIndex = 7;
+            // 
             // product1
             // 
             this.product1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -513,13 +523,25 @@
             this.userSettings1.Size = new System.Drawing.Size(994, 641);
             this.userSettings1.TabIndex = 5;
             // 
-            // vendor1
+            // btnStockAdjustment
             // 
-            this.vendor1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendor1.Location = new System.Drawing.Point(0, 0);
-            this.vendor1.Name = "vendor1";
-            this.vendor1.Size = new System.Drawing.Size(994, 641);
-            this.vendor1.TabIndex = 7;
+            this.btnStockAdjustment.FlatAppearance.BorderSize = 0;
+            this.btnStockAdjustment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockAdjustment.ForeColor = System.Drawing.Color.White;
+            this.btnStockAdjustment.IconChar = FontAwesome.Sharp.IconChar.Warehouse;
+            this.btnStockAdjustment.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnStockAdjustment.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnStockAdjustment.IconSize = 30;
+            this.btnStockAdjustment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockAdjustment.Location = new System.Drawing.Point(13, 353);
+            this.btnStockAdjustment.Name = "btnStockAdjustment";
+            this.btnStockAdjustment.Size = new System.Drawing.Size(231, 29);
+            this.btnStockAdjustment.TabIndex = 5;
+            this.btnStockAdjustment.Text = "Stock Adjustment";
+            this.btnStockAdjustment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockAdjustment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStockAdjustment.UseVisualStyleBackColor = true;
             // 
             // Admin
             // 
@@ -573,6 +595,7 @@
         private FontAwesome.Sharp.IconButton btnSalesHistory;
         private ControlsAdmin.Records records1;
         private ControlsAdmin.Vendor vendor1;
+        private FontAwesome.Sharp.IconButton btnStockAdjustment;
     }
 }
 

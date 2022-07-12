@@ -28,7 +28,7 @@ namespace POS_Inventory.ControlsAdmin
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            VendorDialog f = new VendorDialog();
+            VendorDialog f = new VendorDialog(this);
             f.btnSave.Enabled = true;
             f.btnUpdate.Enabled = false;
             f.ShowDialog();
@@ -47,6 +47,7 @@ namespace POS_Inventory.ControlsAdmin
                     dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["vendor"].ToString(),dr["address"].ToString(),dr["contact_person"].ToString(),dr["telephone"].ToString(),dr["email"].ToString(),dr["fax"].ToString());
                     i++;
                 }
+                dr.Close();
                 conn.Close();
             }
             catch(Exception ex)
@@ -61,7 +62,14 @@ namespace POS_Inventory.ControlsAdmin
             string colName = dataGridView1.Columns[e.ColumnIndex].Name;
             if (colName == "colEdit")
             {
-                VendorDialog f = new VendorDialog();
+                VendorDialog f = new VendorDialog(this);
+                f.lbID.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                f.txtVendor.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                f.txtContactPerson.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                f.txtTelephone.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                f.txtEmail.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                f.txtFax.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 f.btnSave.Enabled = false;
                 f.btnUpdate.Enabled = true;
 
@@ -74,12 +82,12 @@ namespace POS_Inventory.ControlsAdmin
             {
                 if (MessageBox.Show("Remove this Vendor ?", dbcon.GetTitle(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //conn.Open();
-                    //cmd = new SqlCommand("delete from tbBrand where brand_id = '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "';", conn);
-                    //cmd.ExecuteNonQuery();
-                    //conn.Close();
-                    //MessageBox.Show("Brand Deleted", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //LoadData();
+                    conn.Open();
+                    cmd = new SqlCommand("delete from tbVendor where id = '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "';", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Vendor Successfully Removed", dbcon.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadVendor();
                 }
             }
         }

@@ -35,6 +35,7 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.menuBtn = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnStockAdjustment = new FontAwesome.Sharp.IconButton();
             this.btnSalesHistory = new FontAwesome.Sharp.IconButton();
             this.btnStockIn = new FontAwesome.Sharp.IconButton();
             this.btnLogout = new FontAwesome.Sharp.IconButton();
@@ -57,8 +58,8 @@
             this.category1 = new POS_Inventory.ControlsAdmin.Category();
             this.brand1 = new POS_Inventory.ControlsAdmin.Brand();
             this.records1 = new POS_Inventory.ControlsAdmin.Records();
+            this.stockAdjustment1 = new POS_Inventory.ControlsAdmin.StockAdjustment();
             this.userSettings1 = new POS_Inventory.ControlsAdmin.UserSettings();
-            this.btnStockAdjustment = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -176,6 +177,27 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(259, 641);
             this.panel2.TabIndex = 1;
+            // 
+            // btnStockAdjustment
+            // 
+            this.btnStockAdjustment.FlatAppearance.BorderSize = 0;
+            this.btnStockAdjustment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockAdjustment.ForeColor = System.Drawing.Color.White;
+            this.btnStockAdjustment.IconChar = FontAwesome.Sharp.IconChar.SlidersH;
+            this.btnStockAdjustment.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnStockAdjustment.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnStockAdjustment.IconSize = 30;
+            this.btnStockAdjustment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockAdjustment.Location = new System.Drawing.Point(13, 353);
+            this.btnStockAdjustment.Name = "btnStockAdjustment";
+            this.btnStockAdjustment.Size = new System.Drawing.Size(231, 29);
+            this.btnStockAdjustment.TabIndex = 5;
+            this.btnStockAdjustment.Text = "Stock Adjustment";
+            this.btnStockAdjustment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockAdjustment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStockAdjustment.UseVisualStyleBackColor = true;
+            this.btnStockAdjustment.Click += new System.EventHandler(this.btnStockAdjustment_Click);
             // 
             // btnSalesHistory
             // 
@@ -451,6 +473,7 @@
             this.panelContainer.Controls.Add(this.category1);
             this.panelContainer.Controls.Add(this.brand1);
             this.panelContainer.Controls.Add(this.records1);
+            this.panelContainer.Controls.Add(this.stockAdjustment1);
             this.panelContainer.Controls.Add(this.userSettings1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(259, 46);
@@ -515,6 +538,14 @@
             this.records1.Size = new System.Drawing.Size(994, 641);
             this.records1.TabIndex = 6;
             // 
+            // stockAdjustment1
+            // 
+            this.stockAdjustment1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stockAdjustment1.Location = new System.Drawing.Point(0, 0);
+            this.stockAdjustment1.Name = "stockAdjustment1";
+            this.stockAdjustment1.Size = new System.Drawing.Size(994, 641);
+            this.stockAdjustment1.TabIndex = 8;
+            // 
             // userSettings1
             // 
             this.userSettings1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -522,26 +553,6 @@
             this.userSettings1.Name = "userSettings1";
             this.userSettings1.Size = new System.Drawing.Size(994, 641);
             this.userSettings1.TabIndex = 5;
-            // 
-            // btnStockAdjustment
-            // 
-            this.btnStockAdjustment.FlatAppearance.BorderSize = 0;
-            this.btnStockAdjustment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockAdjustment.ForeColor = System.Drawing.Color.White;
-            this.btnStockAdjustment.IconChar = FontAwesome.Sharp.IconChar.Warehouse;
-            this.btnStockAdjustment.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnStockAdjustment.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnStockAdjustment.IconSize = 30;
-            this.btnStockAdjustment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockAdjustment.Location = new System.Drawing.Point(13, 353);
-            this.btnStockAdjustment.Name = "btnStockAdjustment";
-            this.btnStockAdjustment.Size = new System.Drawing.Size(231, 29);
-            this.btnStockAdjustment.TabIndex = 5;
-            this.btnStockAdjustment.Text = "Stock Adjustment";
-            this.btnStockAdjustment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockAdjustment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStockAdjustment.UseVisualStyleBackColor = true;
             // 
             // Admin
             // 
@@ -596,6 +607,7 @@
         private ControlsAdmin.Records records1;
         private ControlsAdmin.Vendor vendor1;
         private FontAwesome.Sharp.IconButton btnStockAdjustment;
+        private ControlsAdmin.StockAdjustment stockAdjustment1;
     }
 }
 

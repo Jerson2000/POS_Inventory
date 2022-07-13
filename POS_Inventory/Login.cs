@@ -19,6 +19,7 @@ namespace POS_Inventory
         SqlDataReader dr;
         GetString dbcon = new GetString();
         public string _cashier="";
+        public string _admin = "";
 
         public Login()
         {

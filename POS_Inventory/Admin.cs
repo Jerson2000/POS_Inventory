@@ -20,6 +20,7 @@ namespace POS_Inventory
         SqlDataReader dr;
         GetString dbcon = new GetString();
         Login sec;
+        public static string _user = "";
         public Admin(Login f)
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace POS_Inventory
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             SetActivePanel(dashboard1);
             this.sec = f;
+            
         }
 
         #region Drag Form 
@@ -100,6 +102,8 @@ namespace POS_Inventory
             userSettings1.Visible = false;
             records1.Visible = false;
             vendor1.Visible = false;
+            stockAdjustment1.Visible = false;
+
             
             control.Visible = true;
 
@@ -198,6 +202,17 @@ namespace POS_Inventory
                 btnVendor.BackColor = System.Drawing.Color.FromArgb(44, 62, 80);
 
             }
+            // Stock Adjustment
+            if (stockAdjustment1.Visible == true)
+            {
+                btnStockAdjustment.IconColor = System.Drawing.Color.White;
+                btnStockAdjustment.BackColor = System.Drawing.Color.FromArgb(52, 74, 96);
+            }
+            else if (stockAdjustment1.Visible == false)
+            {
+                btnStockAdjustment.IconColor = System.Drawing.Color.FromArgb(52, 152, 219);
+                btnStockAdjustment.BackColor = System.Drawing.Color.FromArgb(44, 62, 80);
+            }
 
         }
 
@@ -275,6 +290,13 @@ namespace POS_Inventory
         {
             SetActivePanel(vendor1);
             vendor1.LoadVendor();
+        }
+
+        private void btnStockAdjustment_Click(object sender, EventArgs e)
+        {
+            _user = lbName.Text;
+            SetActivePanel(stockAdjustment1);
+
         }
     }
 

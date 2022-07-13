@@ -57,6 +57,14 @@ namespace POS_Inventory.ControlsAdmin
             e.Handled = true;
         }
 
+        public void Clear()
+        {
+            txtPcode.Clear();
+            txtPDesc.Clear();
+            txtRemarks.Clear();
+            txtQty.Clear();
+            cbAction.Text = "";
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -70,7 +78,8 @@ namespace POS_Inventory.ControlsAdmin
             }
         }
         public void GeneRefNo()
-        {                        
+        {
+            txtRefNo.Clear();
             Random rand = new Random();            
             txtRefNo.Text += rand.Next();
             refno = int.Parse(txtRefNo.Text);
@@ -81,10 +90,40 @@ namespace POS_Inventory.ControlsAdmin
         {
             try
             {
-                if(txtQty.Text == String.Empty || cbAction.Text == String.Empty || txtRemarks.Text == String.Empty)
+                if (txtQty.Text == String.Empty || cbAction.Text == String.Empty || txtRemarks.Text == String.Empty)
                 {
                     MessageBox.Show("Missing required fields to fill!", "MISSING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }                
+                else
+                {          
+                    if(MessageBox.Show("Adjust this product quantity?","Question",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (cbAction.Text == "Remove from Inventory")
+                        {
+                            if (int.Parse(txtQty.Text) > _qty)
+                            {
+                                MessageBox.Show("Quantity cannot be more than the product quantity!", "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                SqlHehe("update tbProduct set qty -= " + int.Parse(txtQty.Text) + " where pcode = '" + txtPcode.Text + "'; ");
+                            }
+
+                        }
+                        else if (cbAction.Text == "Add to Inventory")
+                        {
+                            SqlHehe("update tbProduct set qty += " + int.Parse(txtQty.Text) + " where pcode = '" + txtPcode.Text + "'; ");
+                        }
+                        SqlHehe("insert into tbAdjustment (referenceno,pcode,qty,action,remarks,sdate,[user]) " +
+                            "values ('" + txtRefNo.Text + "', '" + txtPcode.Text + "', " + int.Parse(txtQty.Text) + ",'" + cbAction.Text + "' ,'" + txtRemarks.Text + "',CURRENT_TIMESTAMP,'" + txtUser.Text + "');");
+                        MessageBox.Show("Inventory Successfully Adjusted!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        GeneRefNo();
+                        Clear();
+                        LoadData("");
+                    }
+                                        
                 }
+                
             }
             catch(Exception ex)
             {
@@ -104,7 +143,7 @@ namespace POS_Inventory.ControlsAdmin
             try
             {
                 conn.Open();
-                cmd = new SqlCommand("select * from tbAjustment where referenceno = '"+refno+"'");
+                cmd = new SqlCommand("select * from tbAdjustment where referenceno = '"+refno+"'",conn);
                 dr = cmd.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)

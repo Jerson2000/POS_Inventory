@@ -296,6 +296,7 @@ namespace POS_Inventory
         {
             _user = lbName.Text;
             SetActivePanel(stockAdjustment1);
+            stockAdjustment1.LoadData("");
 
         }
     }
